@@ -1,0 +1,248 @@
+
+%---------------------------------------------------------------------
+%
+%                          capítulo 3
+%
+%---------------------------------------------------------------------
+
+
+
+\chapter{Estado del arte}
+
+\section{Captura de movimiento}
+\label{cap3:sec:capitulo3}
+
+Los sistemas de captura de movimiento o \texttt{Mocap}, son un conjunto de técnicas que se utilizan para registrar los movimientos, ya sea de objetos, animales o mayormente personas, trasladándolos a un modelo 3D.
+En la actualidad, esta técnica se utiliza en la industria del cine y de los videojuegos ya que facilita mucho la labor de los animadores al realizar un modelado más realista. En el cine se utiliza como mecanismo para almacenar los movimientos realizados por los actores, y así poder animar los modelos 3D de los diferentes personajes que tenga el film. En cambio, en el sector de los videojuegos se utiliza para naturalizar los movimientos de los personajes. De ese modo se obtiene una mayor sensación de realismo.
+
+\section{Historia de la captura de movimiento}
+
+\subsection{Precursores}
+Ya en la antigua Grecia, Aristóteles (384-322 AC) escribió el libro \textit{``De Motu Animalium''} (Movimiento de los animales). El no solo veía los cuerpos de los animales como sistemas mecánicos, sino que perseguía la idea de cómo diferenciar la realización de un movimiento y como poderlo hacer realmente, por lo que podrá ser considerado el primer biomecánico de la historia.
+
+Aproximadamente dos mil años después, Leonardo da Vinci (1452-1519) trató de describir algunos mecanismos que utiliza el cuerpo humano para poder desplazarse, como un humano puede saltar, caminar, mantenerse de pie, etc.
+
+Como pionero en la edad moderna, Eadweard Muybridge (1830-1904) fue el primer fotógrafo capaz de diseccionar el movimiento humano y animal, a través de múltiples cámaras tomando varias fotografías para captar instantes seguidos en el tiempo. Este experimento llamado ``el caballo en movimiento'', (véase Figura \ref{fig:EadweardMuybridgeHorse}),  utiliza esta técnica de fotografía. \cite{Mejias2014} \cite{Menendez2015}
+
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/EadweardMuybridge/EadweardMuybridge-}{0}{14}
+    \caption{El caballo en movimiento de Eadweard Muybridge}
+    \label{fig:EadweardMuybridgeHorse}  
+\end{figure}
+
+
+\subsection{Nacimiento de la captura de movimiento}
+
+Al principio de la industria cinematográfica, en la década de 1970, cuando empezaba a surgir la posibilidad de realizar animaciones de personajes por ordenador, se conseguía naturalizar los movimientos mediante técnicas clásicas de diseño, como la técnica de rotoscopia. 
+Esta técnica consiste en reemplazar los frames de una grabación real por dibujos calcados en cada frame. Los estudios \textit{Walt Disney Pictures} utilizaron esta técnica en la película de 1937 ``Blancanieves y los siete enanitos'' (véase Figura \ref{fig:Blancanieves}),  para animar a los personajes del príncipe y Blancanieves. 
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/Blancanieves/Blancanieves-}{0}{24}
+    \caption{Rotoscopia en la película Blancanieves y los siete enanitos}
+    \label{fig:Blancanieves}  
+\end{figure}
+
+En la década de 1980, en los laboratorios de biomecánica hubo un crecimiento en el análisis del movimiento humano mediante el uso de ordenadores. \texttt{Tom Calvert}, profesor de kinesióloga y ciencias de la computación en la universidad Simon Fraser (Canadá), fue uno de los primeros en usar potenciómetros para rastrear los movimientos del cuerpo humano, con el objetivo de ser utilizados por estudios coreográficos y asistencia clínica para ayudar a pacientes con problemas de locomoción.
+
+Mientras tanto surgen los primeros sistemas de monitoreo visual, centros como el MIT (Massachusetts Institute of Technology) empezaron a realizar experimentos con dispositivos de seguimiento visual aplicados en el cuerpo humano. Mas tarde, empiezan a cobrar importancia los primeros sistemas de seguimiento visual como el \texttt{Op-Eye} y el \texttt{SelSpot}. Estos sistemas normalmente usaban pequeños marcadores adheridos al cuerpo (Leds parpadeantes) con una serie de cámaras alrededor del espacio donde se realizaba la actividad.
+
+En 1988, Brad deGraf y Wahrman desarrollaron \textit{Mike the Talking Head} de Silicon Graphics, capaz de mostrar las capacidades de sus nuevos equipos 4D en tiempo real. Mike estaba dirigido por un controlador que permitía controlar diferentes parámetros de la cara del personaje: como los ojos, boca, expresión y posición de la cabeza. El hardware de Silicon Graphics proporcionaba una interpolación en tiempo real entre las expresiones faciales y la geometría de la cabeza del personaje y del usuario. En el congreso de SIGGRAPH, Mike fue mostrado al público, donde se demostró que la tecnología \textit{mocap} estaba preparada para su explotación. 
+
+Tras estos avances, Pacific Data Images desarrolló un exoesqueleto de plástico, de modo que el actor se colocaría el traje con el objetivo de capturar los movimientos corporales: de la cabeza, pecho y brazos, a través de potenciómetros situados en la capa de plástico. De esta manera, los actores podrían controlar los personajes virtuales mimetizando sus movimientos. Pese a que el traje se utilizó en varios proyectos, no se consiguieron los resultados esperados, ya que el ruido de los circuitos y el diseño inapropiado del traje no lo permitían. 
+
+En torno a 1992, la empresa SimGraphics desarrolló un sistema de rastreo facial llamado \textit{Face Waldo}. Consiguieron capturar la mayor parte de los movimientos usando sensores adheridos a la barbilla, labios, mejillas, cejas y en el armazón del casco que llevaba el actor para su posterior aplicación en un personaje virtual en tiempo real. Este sistema logró ser novedoso ya que el actor podía manejar las expresiones faciales de un personaje a través de sus movimientos, logrando unos gestos más naturales que los capturados anteriormente.
+
+Lo que produjo un éxito mayúsculo con este proyecto fue la interpretación en tiempo real de Mario, el personaje principal de la saga de videojuegos \textit{Mario Bros}. Estaba controlado por un actor mediante \textit{Face Waldo}, Mario conseguía dialogar con los miembros de una conferencia, respondiendo a sus preguntas. A partir de ese momento, SimGraphics se centró en la animación en directo, desarrollando personajes para televisión y otros eventos en directo, mejorando la fiabilidad del sistema para el rastreo facial. 
+
+De forma gradual, la técnica \textit{mocap} se fue expandiendo entre las empresas desarrolladoras de sistemas de captura de movimientos, con el objetivo de crear productos y métodos que albergasen nuevos sectores empresariales. 
+
+A lo largo de la última década, hemos visto como han ido apareciendo largometrajes que iban mostrando la evolución de la captura de movimiento con una gran proyección de futuro. Ha pasado de ser una técnica que se utilizaba de forma esporádica para algunos personajes, ha ser indispensable en cualquier producción. Como por ejemplo en los\textit{films}: Gollum en la trilogía de El Señor de los Anillos y de El Hobbit, Avatar, El planeta de los simios, Los vengadores (véase Figura \ref{fig:Thanos}) entre otros. De igual modo, esta técnica es muy utilizada actualmente en los videojuegos como, por ejemplo: The Last Of Us (véase Figura \ref{fig:TheLastOfUs}), Fifa 20, Red Dead Redemption, Uncharted 4.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/Thanos/Thanos_}{0}{19}
+    \caption{Mocap en la película Los vengadores}
+    \label{fig:Thanos}  
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/TheLastOfUs/TheLastOfUs-}{0}{103}
+    \caption{Mocap en el videojuego The Last Of Us}
+    \label{fig:TheLastOfUs}  
+\end{figure}
+
+
+\section{Métodos de captura de movimiento}
+
+En la actualidad existen numerosos sistemas de captura de movimiento. Dependiendo de las necesidades de la producción, ya estén relacionados con el presupuesto disponible, así como las posiciones, velocidades, impulsos del actor o el nivel de realismo al que se quiera llegar. Atendiendo a las tecnologías más utilizadas en la actualidad para la captura de movimiento, se desglosan dos grandes grupos: los sistemas ópticos y no ópticos (incluyendo magnéticos, mecánicos, e inerciales).
+
+Los sistemas ópticos funcionan mediante el seguimiento de marcadores físicos, como luces LED, reflectores, adhesivos con apariencia de pelota de ping-pong o incluso simplemente pintura facial.
+
+Los sistemas no ópticos no utilizan ningún tipo de marcador físico. En su lugar, utilizan software de movimiento de fósforos para seguir el movimiento de un actor, pero este software funciona identificando características clave de un humano, como la boca o una prenda de vestir. Los directores de fotografía crean un boceto rápido en gráficos por ordenador de cualquier personaje que quieran dar vida, y mapean el esqueleto del personaje en el metraje de acción en vivo, teniendo en cuenta la posición, la escala, la orientación y el movimiento.
+
+Esto es mucho más asequible ya que se basa principalmente en software y no requiere de tanto hardware. En un plató para grabar una película o un videojuego, primero se crea el personaje animado digitalmente y, mientras se graba, pueden mapear este personaje sobre el actor mediante captura de movimiento, para que puedan ver instantáneamente cómo el movimiento se traduce en el personaje, junto con la iluminación y los ángulos preferidos. Esto se conoce como cinematografía virtual.
+
+Atendiendo a su tecnología, se pueden encontrar los diferentes métodos que se desarrollan a continuación.
+
+\subsection{Captura de movimiento no óptico}
+
+\subsubsection{Captura de movimiento magnético}
+
+Los sistemas de captura de movimiento magnéticos están formados por sensores creados por tres espirales ortogonales que miden el flujo magnético, determinando tanto la posición como la orientación del sensor. Un transmisor genera un campo electromagnético de baja frecuencia que los receptores detectan y transmiten a la unidad electrónica de control, donde se filtra y amplifica. A continuación, los datos se envían a un ordenador central, donde se deduce la orientación y posición de todos los sensores del escenario. 
+
+Un sistema magnético estándar consta de 18 sensores, una unidad de control electrónica y un software para el procesamiento. En cambio, un sistema de última generación puede tener hasta 90 sensores capaces de capturar hasta 144 muestras por segundo, teniendo un coste medio (en torno a 6.000 \euro).
+
+Estos sistemas tienen el inconveniente de producir interferencias con materiales metálicos debido a su conductividad, ya que se crean campos magnéticos que interfieren con el campo magnético del emisor. De ese modo, se trata de un sistema difícil de transportar a diferentes escenarios. El proceso de captura no es en tiempo real, aunque se aproxima bastante, pese a que tiene un número de capturas por segundo demasiado bajo. Como punto a favor, es más fácil procesar los datos que en otros sistemas \textit{mocap}, ya que los datos obtenidos están en relación con la posición del actor.
+
+
+\subsubsection{Captura de movimiento mecánico}
+
+En el proceso de captura de movimiento mecánica el actor viste unos trajes especiales adaptables al cuerpo humano. En su mayoría, estos trajes están compuestos por estructuras rígidas con barras metálicas o plásticas, unidas mediante potenciómetros colocados en las principales articulaciones. Los potenciómetros se componen de un elemento deslizante acoplado a una resistencia, la cual produce una variación de tensión que puede medirse para conocer el grado de apertura de la articulación donde se encuentre acoplado. Los sensores que recogen la información pueden transmitirla mediante cables, pero normalmente lo hacen con radiofrecuencia.
+
+Estos sistemas tienen el problema de que son incapaces de medir translaciones globales. Pueden medir posiciones relativas de los miembros, pero no como se desplaza el actor por el escenario. Además, el único valor que utilizan para medir es el grado de apertura, no teniendo en cuenta rotaciones complejas que poseen las articulaciones humanas, como es el caso de los hombros, cadera, tobillos, etc. También tienen el inconveniente de ser pesados, restringir el movimiento del actor y su corto tiempo de vida. En cambio, tienen la ventaja de tener un coste relativamente bajo (en torno a 30.000 \euro), capaz de registrar los movimientos del actor en tiempo real con un alcance mayúsculo. 
+
+\subsubsection{Captura de movimiento inercial}
+
+Con el objetivo de capturar el movimiento, los sistemas inerciales se basan en el sistema vestibular humano, el cual regula el sentido de movimiento y del equilibrio, es lo que nos permite situar nuestro cuerpo en el espacio, los desplazamientos y nuestro entorno. El sistema vestibular, ubicado en el oído interno, es un sensor inercial 3D biológico, ya que puede detectar el movimiento angular y la aceleración lineal de la cabeza, permitiendo por su actividad sobre el ojo conservar una imagen estable en la retina. 
+
+Un giroscopio de velocidad mide la velocidad angular y, si se integra con el tiempo, proporciona el cambio de ángulo con respecto a un ángulo inicialmente conocido. Un acelerómetro mide las aceleraciones, incluida la aceleración gravitacional \textit{g}. Si se conoce el ángulo del sensor con respecto a la vertical, se puede eliminar el componente de gravedad y, mediante integración numérica, se pueden determinar la velocidad y la posición
+
+De este modo, con la información obtenida de los sensores, esta se transmite a un ordenador, donde se puede observar el movimiento capturado sobre una figura ya animada. Este tipo de sistemas no utiliza mecanismos externos como cámaras; y como en el caso de los sistemas ópticos, cuantos más sensores se utilicen, más real será el movimiento capturado, teniendo unos grandes rangos de captura. 
+
+
+\subsection{Captura de movimiento óptico}
+
+La detección de movimiento óptico abarca una amplia y variada colección de tecnologías. Los sistemas basados en imágenes determinan la posición mediante el uso de varias cámaras para rastrear puntos predeterminados (marcadores) en los segmentos del cuerpo del actor, alineados con puntos de referencia óseos específicos. La posición se estima mediante el uso de múltiples imágenes 2D del volumen de trabajo. Las técnicas estereométricas correlacionan puntos de seguimiento comunes en los objetos rastreados en cada imagen y utilizan esta información junto con el conocimiento sobre la relación entre cada una de las imágenes y los parámetros de la cámara para calcular la posición.
+
+Estos sistemas permiten la grabación en tiempo real, ya que utilizan un ordenador que recibe la entrada de una o más cámaras digitales CCD (\textit{Charge-coupled device}) sincronizadas produciendo proyecciones simultáneas. Habitualmente se utilizan en torno a 4 o 32 cámaras, siempre y cuando no se añadan de forma innecesarias, ya que complicarían el procesamiento de la información.
+
+Las cámaras utilizadas en este tipo de sistemas tienen una velocidad de captura de entre 30 y 1.000 fotogramas por segundo. Estos sistemas se deben calibrar mediante el rastreo de un objeto visible, de modo que se calcule la posición de cada cámara respecto de ese punto, en el caso de que una cámara se mueva, sería necesario recalibrar el sistema. La interferencia de otras fuentes de luz o reflejos también puede ser un problema que puede resultar en los llamados marcadores fantasma.
+
+Existen varias clases de sensores para este tipo de captura de movimiento:
+
+\subsubsection{Marcadores activos}
+
+Este sistema está compuesto por leds que emiten su propia luz para crear un plano de luz que atraviesa la imagen determinando la posición del actor, de esta manera se consigue aumentar la distancia a la que se puede desplazar el artista. La posición de los marcadores se determina iluminando uno o varios indicadores, de manera sincrónica a las cámaras en cada instante de tiempo, a una frecuencia de muestreo muy alta. De modo que los indicadores deben estar sincronizados con todas las cámaras para realizar una sola captura en cada iluminación. 
+
+Son más apropiados para aplicaciones de mapeo que para el seguimiento dinámico de movimiento del cuerpo humano. Este tipo de sistemas ópticos sufren problemas de oclusión (línea de visión) cuando se bloquea una trayectoria de luz requerida por el sistema.
+
+\subsubsection{Marcadores pasivos}
+
+Los sistemas ópticos con marcadores pasivos utilizan LED de infrarrojos (IR) montados alrededor de la lente de la cámara, junto con filtros de paso de infrarrojos colocados sobre la lente de la cámara y miden la luz reflejada por los marcadores. De esta forma, la luz que reflejan se origina cerca de las cámaras, siendo recogida por estas. 
+
+Los sistemas ópticos basados en LED de pulso miden la luz infrarroja emitida por los LED colocados en las partes del cuerpo. Además, es posible el seguimiento de objetos naturales mediante una cámara sin la ayuda de marcadores, pero en general es menos preciso. Se basa en gran medida en técnicas de visión por ordenador para el reconocimiento de patrones y, a menudo, requiere grandes recursos computacionales. Este tipo de sistemas pueden capturar un gran número de marcadores a una frecuencia de muestreo de hasta 2000 fotogramas por segundo. Se suelen utilizar principalmente para el registro de movimiento facial. 
+
+\section{Métodos de captura de movimiento emergentes}
+
+En la actualidad, el sector cinematográfico y la industria de los videojuegos ha generado la necesidad de crear personajes con gestos y movimientos más realistas, de este modo, se ha conseguido que la captura de movimiento se convierta en una herramienta esencial, ya que permite una mayor inmersión. 
+
+Gracias a estos sectores, han surgido nuevas técnicas de \textit{Motion Capture}, en la que cámaras y software de inteligencia artificial pueden realizar un enfoque de captura de movimiento sin la necesidad de marcadores. El software permite que, mediante algoritmos, se analice al usuario que realiza las acciones, identificando formas humanas, movimientos, expresiones y gestos.
+
+
+\subsection{Visión artificial}
+
+La visión artificial \cite{Visionartificial} es una disciplina científica que incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador. Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la visión artificial trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación. Actualmente se está utilizando cada vez más para el análisis y tratamiento de imágenes mediante algoritmos de inteligencia artificial. 
+
+Atendiendo a su demanda, se pueden encontrar diferentes tecnologías que se desarrollan a continuación.
+
+\subsubsection{Microsoft Azure Kinect DK}
+
+Previamente al actual dispositivo \textit{Azure Kinect DK} (véase Figura \ref{fig:AzureKinectDK}), Microsoft en 2010 desarrolló \textit{Kinect} para \textit{Xbox-One}, un dispositivo pensado para su uso en los videojuegos. Este periférico prescinde de mandos gracias a que dispone de una cámara RGB, un sensor de profundidad, un proyector de luz infrarroja, un micrófono bidireccional y un procesador que utiliza algoritmos para procesar las imágenes tridimensionales.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.7\linewidth]{10}{/AzureKinectDK/AzureKinectDK_}{0}{46}
+    \caption{Azure Kinect DK}
+    \label{fig:AzureKinectDK}   
+\end{figure}
+
+
+
+En marzo de 2020, Microsoft actualizó su dispositivo a la versión \textit{Azure Kinect DK }\cite{AzureKinect}, se trata de un kit para desarrolladores con sensores de inteligencia artificial avanzados que proporcionan modelos sofisticados de visión y voz por ordenador. Este nuevo periférico contiene un sensor de profundidad, una matriz de micrófonos espaciales con una cámara de video y un sensor de orientación como un dispositivo pequeño todo en uno con múltiples modos, opciones y kits de desarrollo de software (SDK) con un gran potencial que se pueden conectar a Azure Cognitive Services, Azure Machine Learning y Azure IoT Edge.
+
+Para localizar los movimientos de los objetos 3D, el periférico, transmite una luz infrarroja a través del escenario, lo que permite conocer el tiempo que tarda la luz en ser reflejada por los objetos. El sistema actúa como un sonar, determinando el tiempo que tarda en reflejarse la luz, estableciendo la distancia a la que se encuentran los objetos en tiempo real.
+
+
+\subsubsection{OpenCV}
+
+\textit{Open Source Computer Vision}\cite{OpenCV} comenzó como un proyecto de investigación en Intel. Actualmente es la biblioteca más popular de visión artificial, contando con implementaciones de más de 2500 algoritmos optimizados, que incluyen un conjunto completo de algoritmos de aprendizaje automático y visión por ordenador clásicos y de última generación. Estos algoritmos se pueden usar para detectar y reconocer rostros (véase Figura \ref{fig:OpenCV}), identificar objetos, clasificar acciones humanas en videos, rastrear movimientos de cámara, rastrear objetos en movimiento, extraer modelos 3D de objetos, producir nubes de puntos 3D a partir de cámaras estéreo, etc. Además, está disponible de forma gratuita para fines comerciales y de investigación.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/OpenCV/OpenCV_}{000}{021}
+    \caption{Detección Facial con OpenCV }
+    \label{fig:OpenCV}  
+\end{figure}
+
+\subsubsection{Deepfake}
+
+Otro de los sistemas emergentes de visión artificial que utilizan el aprendizaje automático y la inteligencia artificial para manipular o generar contenido visual es el \textit{deepfake}. Se trata de una técnica que permite editar videos falsos de personas que aparentemente son reales (véase Figura \ref{fig:Obama}), utilizando para ello algoritmos de aprendizaje no supervisado, y videos o imágenes ya existentes. 
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/Obama/Obama-}{0}{35}
+    \caption{\textit{Deepfake} de Barack Obama}
+    \label{fig:Obama}  
+\end{figure}
+
+Para crear un \textit{deepfake} \cite{Deepfake}, es necesario recopilar cientos de imágenes de las dos personas que queremos sustituir. Inicialmente se crea una codificación de todas las imágenes utilizando una red neuronal con \textit{deep learning}, posteriormente se utiliza un decodificador para reconstruir las imágenes, este proceso tiene un alto coste de procesamiento de GPU, necesitándose aproximadamente 3 días para generar resultados decentes (después de repetir el procesamiento de imágenes más de 10 millones de veces). Con todo ello se extraen las características más importantes para recrear la imagen original sustituyendo al usuario B con las características del usuario A en el video original.
+
+Uno de los ejemplos más destacados del cine utilizando esta técnica es en la tercera saga de \textit{Star Wars}, donde en la película \textit{Rogue One una historia de Star Wars} la \textit{Princesa Leia} aparece con la cara de \textit{Carrie Fisher} cuando era joven, cuando en realidad fue interpretada por la actriz noruega \textit{Ingvild Deila} (véase Figura \ref{fig:Leia}). Años más tarde, la actriz falleció poco después de haberse completado el rodaje de la película \textit{Los últimos Jedi} y, contando con ella para aparecer en el \textit{Episodio IX - El ascenso de Skywalker}, fue necesario aplicar nuevamente las mismas técnicas para dar vida de nuevo a \textit{Carrie Fisher} como la \textit{Princesa Leia}.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/Leia/Leia_}{000}{031}
+    \caption{\textit{Deepfake} de la Princesa Leia en Star Wars}
+    \label{fig:Leia}  
+\end{figure}
+
+\subsection{Realidad virtual}
+
+La realidad virtual es la tecnología que ofrece al usuario la sensación de estar en otro lugar, es decir, la tecnología engaña a tus sentidos, oculta el mundo real a tus ojos y te sumerge en uno nuevo de manera totalmente inmersiva. Se trata de una experiencia sensorial completa, simulando los espacios diversos en los que podemos explorar e interactuar el entorno tal y como si estuviéramos ahí realmente.
+
+Para adentrarse en un entorno virtual, es necesario colocarse unas gafas especiales para poder visualizar la simulación, estas normalmente están conectadas a un ordenador, aunque ya existen modelos \textit{all in one}, aunque tienen la desventaja de no ser tan potentes gráficamente. 
+
+Para determinar la posición exacta donde el usuario se encuentra situado tanto en el mundo real, como en el mundo virtual, estos sistemas vienen acompañados de unas estaciones base. Estos sensores son colocados en la habitación de juego permitiendo al sistema determinar la ubicación exacta tanto de las gafas de \textit{VR}, como de los controles y \textit{trackers}. 
+
+Estos dispositivos de \textit{VR} disponen de sensores ópticos pasivos que reconocen el movimiento de tu cabeza, de manera que cuando la gires hacia un lado hagas el mismo movimiento dentro del mundo virtual en el que estés. 
+
+Algunos modelos \textit{all in one} de \textit{VR} no necesitan estaciones base para determinar la posición en la que se encuentran los dispositivos de \textit{VR} en el entorno. Disponen de una serie de cámaras (véase Figura \ref{fig:Quest}) incorporadas en las mismas gafas de \textit{VR}, creando un sistema guardián que determina la zona de juego a utilizar en el mundo virtual.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/Quest/Quest_}{000}{021}
+    \caption{Oculus Quest, modelo \textit{all in one} de \textit{VR}}
+    \label{fig:Quest}  
+\end{figure}
+
+La producción de contenido de animación ha implicado tradicionalmente configuraciones de captura de movimiento muy caras que utilizan docenas de cámaras. Esta producción de animación de alta calidad estaba limitada a grandes estudios con grandes presupuestos. Pero en los últimos años, los avances en la tecnología de rastreo han traído una producción de animación de excelente calidad a proyectos de menor presupuesto, estudios de cine y juegos independientes. \cite{Vive}
+
+Sin la necesidad de tener grandes equipos, surgen increíbles resultados con una excelente captura de movimiento (véase Figura \ref{fig:ViveMocap}).
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/ViveMocap/ViveMocap_}{000}{066}
+    \caption{Ejemplo de \textit{Mocap} con \textit{trackers} Vive}
+    \label{fig:ViveMocap}  
+\end{figure}
+
+% \begin{figure}[h!]
+%     \centering
+%     \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/OculusRift/OculusRift-}{0}{52}
+%     \caption{\textit{Hand tracking} en las Oculus Rift}
+%     \label{fig:OculusRift}  
+% \end{figure}
+
+Como base para el estudio de la captura de movimientos y las tecnologías disponibles en este ámbito, se han realizado diferentes consultas a los siguientes proyectos: \cite{ Menendez2015} \cite{ Mejias2014} \cite{VIC}.
+
+\section{Trabajo relacionado}
+
+Para la realización de este proyecto se han revisado trabajos anteriores en el área de los \textit{Reactive Virtual Trainers}, además de cuáles son las tecnologías más emergentes en el mercado. En este apartado se describirán los análisis de esos proyectos, y de este modo, poder aclarar y enfocar el desarrollo de este proyecto.
+
+
+% \subsection{Captura de movimiento en la danza}
+% Uno de los campos en donde la captura de movimiento aparece es en la danza, y un claro ejemplo es \citep{Kyan:2015:ABD:2753829.2735951}. En este artículo se describe una forma de evaluar y visualizar en tiempo real, los movimientos de la danza de ballet. Para desempeñar esa tarea utilizan como recurso la tecnología de captura de movimiento \textit{Kinect}, y gracias a ella, registran los movimientos de bailarines profesionales, de modo que , sean una base para las comparaciones de movimientos. Estos, a su vez, son representados como un \textit{espacio de posturas} en forma de trayectorias de gestos. La evaluación de la coreografía empezaría cuando detecte al bailarín aficionado y con el fin de proporcionar una puntuación para cada coreografía, se compara la posición alineada y velocidad del bailarín aficionado con las correspondientes del bailarín profesional.
