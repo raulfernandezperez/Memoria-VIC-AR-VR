@@ -1,0 +1,95 @@
+%---------------------------------------------------------------------
+%
+%                          capítulo 5
+%
+%---------------------------------------------------------------------
+\chapter{Desarrollo del Proyecto}
+
+\label{cap5:sec:Desarrollo del Proyecto}
+
+Una vez elegida la tecnología y las plataformas que se van a utilizar se empieza a preparar el desarrollo del proyecto. En este capítulo se explicará que libreras y paquete de \texttt{Unity} que se necesitan para tener un entorno de desarrollo potente e innovador. Además, se explicará cuales han sido las metodologías utilizadas para plasmar el proceso seguido para realizar el \textit{Mocap}. El tipo de información guardada, como se ha realizado la grabación de los movimientos captados por los sensores de realidad virtual y cual ha sido la elección para mostrar dicha información.
+
+En la siguiente sección se especificará el proceso realizado para grabar los movimientos capturados, de modo que el profesor obtendrá una visualización directa de cómo ha quedado grabado el movimiento deseado, sin la necesidad de quitarse las gafas de realidad virtual.
+
+Para ofrecer una aplicación dinámica y que el alumno reciba un \textit{feedback} gestual de los movimientos, se ilustra como se diseña e implementan avatares con animaciones en \texttt{Unity}.
+
+De forma sucesiva, se describe el diseño de los escenarios 3D para ubicar a los avatares principales de la aplicación (profesor y alumno). De este modo se han diseñado dos escenarios, uno para grabar y reproducir los movimientos realizados por el profesor dentro de \texttt{VR} y otro en \texttt{AR} donde el alumno podrá visualizar las veces necesarias los movimientos realizado por el profesor.
+
+Posteriormente se elaboran una serie de escenas en \texttt{Unity} que servirán para ilustrar la interfaz para cada una de las aplicaciones (VR y AR). Se ha creado un entorno diferenciado según las necesidades dadas por las diferentes plataformas a desarrollar en el proyecto. Entre estos escenarios las aplicaciones cuentan con las siguientes escenas:
+
+\begin{itemize}
+	\item \texttt{VR}: Escena principal de VR, escena de grabación de movimientos, escena de reproducción de los movimientos guardados.
+ 	\item \texttt{AR}: Escena principal de AR (donde el alumno seleccionará el nivel de aprendizaje) y la escena para realizar el entrenamiento.
+\end{itemize}
+
+\section{Investigación para el desarrollo de \textit{Mocap} en Realidad Virtual y Realidad Aumentada}
+
+Parar desarrollar cualquier aplicación en \texttt{Unity} es necesario conocer el contenido que te puede ofrecer la tienda de este \textit{Game Engine}. El \texttt{Asset Store de Unity} es el hogar de una creciente biblioteca de \textit{assets} comerciales y gratuitos creados por \texttt{Unity Technologies} y miembros de la comunidad. Hay una gran cantidad de \textit{assets} disponibles, desde texturas, modelos y animaciones hasta ejemplos de proyectos completos, tutoriales y extensiones del editor. Estos \textit{assets} son accesibles desde una interfaz simple dentro de \texttt{Unity} y son descargados e importados directamente en el proyecto creado.
+
+\subsection{SteamVR}
+
+El primer paquete necesario para poder desarrollar una aplicación de VR en HTC Vice es SteamVR\footnote{\url{https://www.steamvr.com/es/}}. Con este \textit{Asset}(nombre que se le da a los paquetes de Unity) los desarrolladores podemos dirigir una API a la que se pueden conectar todos los auriculares populares de RV para PC. El moderno \texttt{SteamVR Unity Plugin} gestiona tres cosas principales para los desarrolladores: la carga de modelos 3D para los controladores de RV, el manejo de la entrada de esos controladores y la estimación del aspecto de la mano mientras se utilizan esos controladores. Además de gestionar estas cosas, tenemos un ejemplo de Sistema de Interacción para ayudar a poner en marcha una aplicación de VR. Proporcionando ejemplos concretos de interacción con el mundo virtual y las diferentes APIs. 
+
+Además, nos permite acceder a los juegos a través de una interfaz que se proyecta en una habitación de nuestra realidad virtual, que podemos aprovechar para jugar a cualquier juego que tengamos en Steam VR.
+
+Este paquete tiene todo lo necesario para reconocer la conectividad de los dispositivos utilizados en VR y para poder utilizar los datos obtenidos de los sensores colocados en la habitación de juego. 
+
+El Asset nos ofrece una serie de ejemplos básicos para poder comprender mejor el funcionamiento de VR. A su vez, es necesaria la instalación de \texttt{Steam}\footnote{\url{ https://store.steampowered.com}} ya que trae incorporados los drivers imprescindibles para la correcta configuración de los dispositivos utilizados en VR(controles y \textit{trackers}).
+
+Los ejemplos que tiene implementado el paquete de \texttt{SteamVR Plugin} son variados y pueden servir como un buen punto de partida para desarrollar el proyecto. La escena de ejemplo \textit{Interactions\_Example} incluye todos los componentes principales y es un buen lugar para familiarizarse con el sistema. La escena contiene los siguientes elementos:
+
+
+\begin{itemize}
+	\item \texttt{Player}: este \textit{prefab} es el núcleo de todo el sistema. La mayoría de los demás componentes dependen del jugador para estar presente en la escena.
+\item \texttt{Teleporting}: el \textit{prefab} \textit{Teleporting} maneja toda la lógica de teletransportación del sistema.
+\item \texttt{InteractableExample}: muestra un interacción simple sobre los aspectos básicos para recibir mensajes de las manos y cómo reaccionar ante estas notificaciones.
+\item \texttt{Throwables}: muestra cómo se puede utilizar el sistema para interactuar con los objetos y crear diferentes tipos de objetos tirables.
+\item \texttt{Skeleton}: diferentes objetos de modelos de mano junto con opciones para determinar a qué mano corresponden del esqueleto.
+\item \texttt{Proximity Button}: una tarea común es presionar un botón. Los botones físicos son más satisfactorios de usar que las interfaces planas, pero los sistemas de interacción física pueden volverse complejos rápidamente. Se ha incluido un botón que se puede presionar con solo estar cerca de un controlador.
+\item \texttt{Interesting Interactables}: Estos son ejemplos un poco más complejos del uso del sistema \texttt{Skeleton Poser} junto con \texttt{Throwables}. Dependiendo del objeto con el que interactuar obtienes diferentes poses de acción.
+\item \texttt{UI}: muestra cómo se manejan las sugerencias en el sistema de interacción y cómo se puede usar para interactuar con los \textit{widgets} de la interfaz, como botones.
+\item \texttt{LinearDrive}: este es un objeto un poco más complejo que combina algunas piezas diferentes para crear un objeto animado que se puede controlar mediante interacciones simples.
+\item \texttt{CircularDrive}: esto muestra cómo las interacciones se pueden restringir y mapear de manera diferente para realizar movimientos más complejos.
+\item \texttt{Longbow}: es uno de los objetos más complejos en el \textit{Asset} y muestra cómo se pueden combinar piezas simples para crear una mecánica de juego completa. 
+\end{itemize}
+
+Repasando los diferentes objetos en esta escena de ejemplo te das una amplia idea de la amplitud del sistema de interacción y cómo combinar sus diferentes partes para crear acciones complejas.
+
+Una vez explicado los ejemplos, se elige cuál de ellos se podría utilizar para aprovechar su funcionalidad y tener un apoyo base para el desarrollo del proyecto. Los ejemplos seleccionados serán el \texttt {Player, Skeleton y UI}. Más adelante se explica con más detalle que se utiliza de estos ejemplos.
+
+
+\subsection{Final IK}
+
+El uso de la realidad virtual presenta muchos desafíos nuevos para el diseño y desarrollo de captura de movimiento, entre ellos el problema de la cinemática inversa (\textit{Inverse Kinematics}). 
+
+La cinemática inversa es la técnica que permite determinar el movimiento de una cadena de articulaciones para lograr que un actuador final se ubique en una posición concreta. El cálculo de la cinemática inversa es un problema complejo que consiste en la resolución de una serie de ecuaciones cuya solución normalmente no es única.\cite{CinematicaInversa}
+
+Este concepto es muy importante para el desarrollo de animaciones en 3D, donde se utiliza para conectar físicamente los personajes del juego en el mundo tridimensional, tales como la sujeción rígida de los pies en un terreno. Una figura animada se modela con un esqueleto de segmentos rígidos conectados con las articulaciones. El problema de cinemática inversa radica en calcular los ángulos de las articulaciones para una pose deseada. A menudo es más fácil para los diseñadores, artistas y animadores definir la configuración espacial de un conjunto sobre las partes móviles, como los brazos y las piernas, en lugar de manipular directamente los ángulos de las articulares. 
+
+Por lo tanto, la cinemática inversa se utiliza en los sistemas \textit{Mocap} para animar las posiciones de las articulaciones. El conjunto de un esqueleto humano se modela como eslabones rígidos conectados por articulaciones que se definen restricciones geométricas. 
+
+Para realizar un movimiento de cualquier extremidad del cuerpo, se requiere el cálculo de los ángulos de las otras articulaciones conectadas con esa parte del cuerpo. Por ejemplo, la cinemática inversa permite mover la mano de un modelo humano 3D con una posición y orientación deseada. Para su correcto funcionamiento es necesario tener un algoritmo que seleccione el ángulo de rotación correcto para cada una de las articulaciones del cuerpo humano, como la muñeca, el codo y los hombros.
+
+Para solventar el problema de la cinemática inversa (véase Figura \ref{fig:IK}) en las articulaciones del cuerpo humano, se estudió una serie de \textit{Assets} capaces de solucionar el problema.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{30}{/IK/IK-}{0}{146}
+    \caption{Diferencia entre \textit{Forward Kinematics e Inverse Kinematics}}
+    \label{fig:IK}  
+\end{figure}
+
+La primera elección fue UMotion \footnote{\url{ https://www.soxware.com/umotion/}}, ya que se trata de un editor de animación que ofrece potentes herramientas y flujos de trabajo dentro de Unity. La creación de animaciones en la misma aplicación y situación en la que se van a utilizar simplifica todo el flujo de trabajo acelerando el desarrollo del proyecto. 
+
+El problema surgió cuando se intentan asignar los diferentes componentes de VR dentro del \textit{Asset}, no era posible realizar dicha acción, no admitía VR, por lo que fue descartada esta opción.
+
+\vspace{1cm}
+Actualmente no hay muchas soluciones \textit{IK} de cuerpo completo disponibles que cumplan con los requisitos muy específicos del desarrollo en realidad virtual.
+
+Además de la precisión y la calidad general de la cinemática inversa, también es vital que el \textit{Asset} sea altamente eficiente y eficaz, ya que la realidad virtual tiene una gran carga de CPU y GPU. 
+
+Por lo tanto, la realidad virtual requiere que \textit{IK} se resuelva no solo en alta frecuencia, sino también en alta calidad: todo se vuelve observable con gran detalle y en primera persona más aun, ya que incluso debe estar a la altura de la comparación con la realidad.
+
+Teniendo en cuenta todo esto, se optó por la solución \texttt{Final IK} \footnote{\url{http://root-motion.com/}}, la cual cumplía con todos estos requisitos, incluyendo la compatibilidad con VR. 
+
+\subsection{ARCore}
