@@ -22,7 +22,7 @@ Ya en la antigua Grecia, Aristóteles (384-322 AC) escribió el libro \textit{``
 
 Aproximadamente dos mil años después, Leonardo da Vinci (1452-1519) trató de describir algunos mecanismos que utiliza el cuerpo humano para poder desplazarse, como un humano puede saltar, caminar, mantenerse de pie, etc.
 
-Como pionero en la edad moderna, Eadweard Muybridge (1830-1904) fue el primer fotógrafo capaz de diseccionar el movimiento humano y animal, a través de múltiples cámaras tomando varias fotografías para captar instantes seguidos en el tiempo. Este experimento llamado ``el caballo en movimiento'', (véase Figura \ref{fig:EadweardMuybridgeHorse}),  utiliza esta técnica de fotografía. \cite{Mejias2014} \cite{Menendez2015}
+Como pionero en la edad moderna, Eadweard Muybridge (1830-1904) fue el primer fotógrafo capaz de diseccionar el movimiento humano y animal, a través de múltiples cámaras tomando varias fotografías para captar instantes seguidos en el tiempo. Este experimento llamado ``el caballo en movimiento'', (véase Figura \ref{fig:EadweardMuybridgeHorse}),  utiliza esta técnica de fotografía.\cite{Mejias2014} \cite{Menendez2015}
 
 
 \begin{figure}[h!]
@@ -145,7 +145,7 @@ Gracias a estos sectores, han surgido nuevas técnicas de \textit{Motion Capture
 
 \subsection{Visión artificial}
 
-La visión artificial \cite{Visionartificial} es una disciplina científica que incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador. Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la visión artificial trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación. Actualmente se está utilizando cada vez más para el análisis y tratamiento de imágenes mediante algoritmos de inteligencia artificial. 
+La visión artificial\cite{Visionartificial} es una disciplina científica que incluye métodos para adquirir, procesar, analizar y comprender las imágenes del mundo real con el fin de producir información numérica o simbólica para que puedan ser tratados por un ordenador. Tal y como los humanos usamos nuestros ojos y cerebros para comprender el mundo que nos rodea, la visión artificial trata de producir el mismo efecto para que los ordenadores puedan percibir y comprender una imagen o secuencia de imágenes y actuar según convenga en una determinada situación. Actualmente se está utilizando cada vez más para el análisis y tratamiento de imágenes mediante algoritmos de inteligencia artificial. 
 
 Atendiendo a su demanda, se pueden encontrar diferentes tecnologías que se desarrollan a continuación.
 
@@ -168,6 +168,7 @@ Para localizar los movimientos de los objetos 3D, el periférico, transmite una 
 
 
 \subsubsection{OpenCV}
+\label{cap3:sec:OpenCV}
 
 \textit{Open Source Computer Vision}\cite{OpenCV} comenzó como un proyecto de investigación en Intel. Actualmente es la biblioteca más popular de visión artificial, contando con implementaciones de más de 2500 algoritmos optimizados, que incluyen un conjunto completo de algoritmos de aprendizaje automático y visión por ordenador clásicos y de última generación. Estos algoritmos se pueden usar para detectar y reconocer rostros (véase Figura \ref{fig:OpenCV}), identificar objetos, clasificar acciones humanas en videos, rastrear movimientos de cámara, rastrear objetos en movimiento, extraer modelos 3D de objetos, producir nubes de puntos 3D a partir de cámaras estéreo, etc. Además, está disponible de forma gratuita para fines comerciales y de investigación.
 
@@ -189,7 +190,7 @@ Otro de los sistemas emergentes de visión artificial que utilizan el aprendizaj
     \label{fig:Obama}  
 \end{figure}
 
-Para crear un \textit{deepfake} \cite{Deepfake}, es necesario recopilar cientos de imágenes de las dos personas que queremos sustituir. Inicialmente se crea una codificación de todas las imágenes utilizando una red neuronal con \textit{deep learning}, posteriormente se utiliza un decodificador para reconstruir las imágenes, este proceso tiene un alto coste de procesamiento de GPU, necesitándose aproximadamente 3 días para generar resultados decentes (después de repetir el procesamiento de imágenes más de 10 millones de veces). Con todo ello se extraen las características más importantes para recrear la imagen original sustituyendo al usuario B con las características del usuario A en el video original.
+Para crear un \textit{deepfake}\cite{Deepfake}, es necesario recopilar cientos de imágenes de las dos personas que queremos sustituir. Inicialmente se crea una codificación de todas las imágenes utilizando una red neuronal con \textit{deep learning}, posteriormente se utiliza un decodificador para reconstruir las imágenes, este proceso tiene un alto coste de procesamiento de GPU, necesitándose aproximadamente 3 días para generar resultados decentes (después de repetir el procesamiento de imágenes más de 10 millones de veces). Con todo ello se extraen las características más importantes para recrear la imagen original sustituyendo al usuario B con las características del usuario A en el video original.
 
 Uno de los ejemplos más destacados del cine utilizando esta técnica es en la tercera saga de \textit{Star Wars}, donde en la película \textit{Rogue One una historia de Star Wars} la \textit{Princesa Leia} aparece con la cara de \textit{Carrie Fisher} cuando era joven, cuando en realidad fue interpretada por la actriz noruega \textit{Ingvild Deila} (véase Figura \ref{fig:Leia}). Años más tarde, la actriz falleció poco después de haberse completado el rodaje de la película \textit{Los últimos Jedi} y, contando con ella para aparecer en el \textit{Episodio IX - El ascenso de Skywalker}, fue necesario aplicar nuevamente las mismas técnicas para dar vida de nuevo a \textit{Carrie Fisher} como la \textit{Princesa Leia}.
 
@@ -201,6 +202,7 @@ Uno de los ejemplos más destacados del cine utilizando esta técnica es en la t
 \end{figure}
 
 \subsection{Realidad virtual}
+\label{cap3:sec:realidadVirtual}
 
 La realidad virtual es la tecnología que ofrece al usuario la sensación de estar en otro lugar, es decir, la tecnología engaña a tus sentidos, oculta el mundo real a tus ojos y te sumerge en uno nuevo de manera totalmente inmersiva. Se trata de una experiencia sensorial completa, simulando los espacios diversos en los que podemos explorar e interactuar el entorno tal y como si estuviéramos ahí realmente.
 
@@ -219,7 +221,7 @@ Algunos modelos \textit{all in one} de \textit{VR} no necesitan estaciones base 
     \label{fig:Quest}  
 \end{figure}
 
-La producción de contenido de animación ha implicado tradicionalmente configuraciones de captura de movimiento muy caras que utilizan docenas de cámaras. Esta producción de animación de alta calidad estaba limitada a grandes estudios con grandes presupuestos. Pero en los últimos años, los avances en la tecnología de rastreo han traído una producción de animación de excelente calidad a proyectos de menor presupuesto, estudios de cine y juegos independientes. \cite{Vive}
+La producción de contenido de animación ha implicado tradicionalmente configuraciones de captura de movimiento muy caras que utilizan docenas de cámaras. Esta producción de animación de alta calidad estaba limitada a grandes estudios con grandes presupuestos. Pero en los últimos años, los avances en la tecnología de rastreo han traído una producción de animación de excelente calidad a proyectos de menor presupuesto, estudios de cine y juegos independientes.\cite{Vive}
 
 Sin la necesidad de tener grandes equipos, surgen increíbles resultados con una excelente captura de movimiento (véase Figura \ref{fig:ViveMocap}).
 
@@ -230,19 +232,12 @@ Sin la necesidad de tener grandes equipos, surgen increíbles resultados con una
     \label{fig:ViveMocap}  
 \end{figure}
 
-% \begin{figure}[h!]
-%     \centering
-%     \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/OculusRift/OculusRift-}{0}{52}
-%     \caption{\textit{Hand tracking} en las Oculus Rift}
-%     \label{fig:OculusRift}  
-% \end{figure}
 
 Como base para el estudio de la captura de movimientos y las tecnologías disponibles en este ámbito, se han realizado diferentes consultas a los siguientes proyectos: \cite{ Menendez2015} \cite{ Mejias2014} \cite{VIC}.
 
 \section{Trabajo relacionado}
 
 Para la realización de este proyecto se han revisado trabajos anteriores en el área de los \textit{Reactive Virtual Trainers}, además de cuáles son las tecnologías más emergentes en el mercado. En este apartado se describirán los análisis de esos proyectos, y de este modo, poder aclarar y enfocar el desarrollo de este proyecto.
-
 
 % \subsection{Captura de movimiento en la danza}
 % Uno de los campos en donde la captura de movimiento aparece es en la danza, y un claro ejemplo es \citep{Kyan:2015:ABD:2753829.2735951}. En este artículo se describe una forma de evaluar y visualizar en tiempo real, los movimientos de la danza de ballet. Para desempeñar esa tarea utilizan como recurso la tecnología de captura de movimiento \textit{Kinect}, y gracias a ella, registran los movimientos de bailarines profesionales, de modo que , sean una base para las comparaciones de movimientos. Estos, a su vez, son representados como un \textit{espacio de posturas} en forma de trayectorias de gestos. La evaluación de la coreografía empezaría cuando detecte al bailarín aficionado y con el fin de proporcionar una puntuación para cada coreografía, se compara la posición alineada y velocidad del bailarín aficionado con las correspondientes del bailarín profesional.

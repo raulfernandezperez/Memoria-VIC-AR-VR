@@ -44,9 +44,14 @@
 
 \usepackage{float}
 
+%paquete para escribir codigo
+\usepackage{listings}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+
+
 
 %estilo de la cabecera
 \pagestyle{fancy}
@@ -81,11 +86,13 @@
 \addtolength{\headheight}{2pt}
 \renewcommand{\headrulewidth}{0.5pt}
 
+%separación de los parrafos
+\setlength{\parskip}{3mm}
 
 \include{Capitulos/Introduccion}
 \include{Capitulos/Introduction}
-%\include{Capitulos/Capitulo3}
-%\include{Capitulos/Capitulo4}
+\include{Capitulos/Capitulo3}
+\include{Capitulos/Capitulo4}
 \include{Capitulos/Capitulo5}
 
 

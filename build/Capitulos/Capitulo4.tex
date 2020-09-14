@@ -12,11 +12,12 @@ En este capítulo se presentan las tecnologías y dispositivos empleadas para el
 
 \section{Software empleado}
 
-Para el desarrollo de este proyecto, el principal software utilizado ha sido \texttt{Unity 2019.4.9f1} \cite{Unity_Manual}. Este \textit{Game Engine} hace referencia a una plataforma de desarrollo de software capaz de realizar rutinas de programación que permiten el diseño, la creación y el funcionamiento de un entorno interactivo;
+Para el desarrollo de este proyecto, el principal software utilizado ha sido \texttt{Unity 2019.4.9f1}\cite{Unity_Manual}. Este \textit{Game Engine} hace referencia a una plataforma de desarrollo de software capaz de realizar rutinas de programación que permiten el diseño, la creación y el funcionamiento de un entorno interactivo;
 
-Con el fin de elaborar, compilar y depurar el proyecto de \texttt{Unity} se ha utilizado \texttt{Visual Studio 2019} \cite{ VisualStudio} con el lenguaje de programación C\#, ya que mantienen una sola base de código para todas las plataformas. Respecto a la creación de los personajes, se observó que \texttt{Fuse Character Creator de Mixamo} \cite{FuseCharCreaMixamo} ofrecía una  creación de modelos humanos realistas con una alta calidad de las texturas. En cuanto a la configuración previa de las animaciones, se hizo uso de \texttt{Mixamo 3D Animation Online Services} \cite{Mixamo3DAnimation}, ya que es una compañía tecnológica encargada del desarrollo y venta de servicios para la animación de personajes 3D. Como plataforma para el desarrollo colaborativo del proyecto se usó GitHub, utilizando el sistema de control de versiones Git.
+Con el fin de elaborar, compilar y depurar el proyecto de \texttt{Unity} se ha utilizado \texttt{Visual Studio 2019}\cite{ VisualStudio} con el lenguaje de programación C\#, ya que mantienen una sola base de código para todas las plataformas. Respecto a la creación de los personajes, se observó que \texttt{Fuse Character Creator de Mixamo}\cite{FuseCharCreaMixamo} ofrecía una  creación de modelos humanos realistas con una alta calidad de las texturas. En cuanto a la configuración previa de las animaciones, se hizo uso de \texttt{Mixamo 3D Animation Online Services}\cite{Mixamo3DAnimation}, ya que es una compañía tecnológica encargada del desarrollo y venta de servicios para la animación de personajes 3D. Como plataforma para el desarrollo colaborativo del proyecto se usó GitHub, utilizando el sistema de control de versiones Git.
 
 \subsection{Unity}
+\label{cap4:sec:unity}
 
 El objetivo de este proyecto trata de como poder realizar una captura de movimiento de calidad sobre el arte marcial afrobrasileño (capoeira) y como representarla gráficamente con las tecnologías más demandadas del mercado.
 
@@ -44,9 +45,7 @@ Los elementos incorporados a la escena, se archivan en otro panel, con el nombre
 
 Existe otro panel denominado \textit{Project}, donde se agrupan en forma de directorio, todos los \textit{scripts}, paquetes, modelos 3D, imágenes y archivos, relacionados con el proyecto.
 
-\vspace{0.7cm}
-
-Para comprobar el funcionamiento desarrollado en \textit{Unity} se necesita activar el \textit{Play mode}. Esta funcionalidad permite poner en funcionamiento el juego, pararlo y detener su ejecución, siendo esto, fundamental para comprobar y depurar un juego \cite{Unity_Manual}.
+Para comprobar el funcionamiento desarrollado en \textit{Unity} se necesita activar el \textit{Play mode}. Esta funcionalidad permite poner en funcionamiento el juego, pararlo y detener su ejecución, siendo esto, fundamental para comprobar y depurar un juego\cite{Unity_Manual}.
 
 La transición de un script de Unity ejecuta una serie de funciones de eventos en un orden predeterminado. Este diagrama (véase Figura \ref{fig:UnityEvents}) describe algunas funciones de eventos y explica cómo encajan en la secuencia de ejecución dentro de la lógica del proyecto.
 
@@ -90,6 +89,7 @@ Al terminar de modelar el personaje, se pasará a la sección de vestuario. Dond
 
 
 \subsection{Mixamo}
+\label{cap4:sec:mixamo}
 
 Mixamo\footnote{\url{https://www.mixamo.com}} es una compañía tecnológica (adquirida en 2015 por Adobe System) encargada del desarrollo y venta de servicios para la animación de personajes 3D. Proporcionando un servicio \textit{online}, que permite buscar entre una amplia gama de movimientos, que van desde el combate, pasando por deportes, hasta poder tocar un instrumento (véase Figura \ref{fig:Mixamo}).
 
@@ -103,10 +103,8 @@ Mixamo\footnote{\url{https://www.mixamo.com}} es una compañía tecnológica (ad
 Los productos y características de Mixamo son compatibles con todos los paquetes de software 3D, pudiendo realizar una exportación, eligiendo entre varias aplicaciones 3D como: \texttt{Unity, Unreal Engine, Blender} y el conjunto de herramientas de Adobe Creative) entre otros.
 
 Una de las características más sorprendentes de Mixamo, es el \textit{Auto-Rigger}. Ya que ahorras horas de trabajo modelando el personaje y con este sistema, el proceso sucede en cuestión de minutos. Todo lo que se necesita hacer es subir al servidor de Mixamo el personaje 3D (soporta .fbx, .bvh, .zip, obj), seleccionar el número de huesos que mejor se adapte al esqueleto del personaje y esperar que termine el proceso de \textit{rigger}.
-\vspace{0.4cm}
 
 Tras completar la fase de modelado, Mixamo ofrece la posibilidad de animar al personaje con movimientos, que permiten, no solo aplicar cualquier animación, sino también personalizarlas, ya que se pueden modificar en tiempo real con el personaje, obteniendo el resultado deseado. Por último, descargarlos en cualquier formato que se necesite (.fbx, .bvh, .dae) y fácilmente se podrá combinar de nuevo en las escenas 3D.
-\vspace{0.4cm}
 
 Estas animaciones utilizan una base matemática, lo que facilita su uso para los diferentes personajes que se deseen animar. Tradicionalmente era extremadamente lento, costoso y complicado, lograr modelar personajes 3D con resultados de alta calidad. En cambio, mediante esta técnica, Mixamo intenta reducir los tiempos de desarrollo, pudiendo obtener unas animaciones de calidad, sin la necesidad de contar con altos recursos. 
 
