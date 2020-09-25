@@ -68,14 +68,6 @@ A lo largo de la última década, hemos visto como han ido apareciendo largometr
     \label{fig:Thanos}  
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/TheLastOfUs/TheLastOfUs-}{0}{103}
-    \caption{Mocap en el videojuego The Last Of Us}
-    \label{fig:TheLastOfUs}  
-\end{figure}
-
-
 \section{Métodos de captura de movimiento}
 
 En la actualidad existen numerosos sistemas de captura de movimiento. Dependiendo de las necesidades de la producción, ya estén relacionados con el presupuesto disponible, así como las posiciones, velocidades, impulsos del actor o el nivel de realismo al que se quiera llegar. Atendiendo a las tecnologías más utilizadas en la actualidad para la captura de movimiento, se desglosan dos grandes grupos: los sistemas ópticos y no ópticos (incluyendo magnéticos, mecánicos, e inerciales).
@@ -83,6 +75,13 @@ En la actualidad existen numerosos sistemas de captura de movimiento. Dependiend
 Los sistemas ópticos funcionan mediante el seguimiento de marcadores físicos, como luces LED, reflectores, adhesivos con apariencia de pelota de ping-pong o incluso simplemente pintura facial.
 
 Los sistemas no ópticos no utilizan ningún tipo de marcador físico. En su lugar, utilizan software de movimiento de fósforos para seguir el movimiento de un actor, pero este software funciona identificando características clave de un humano, como la boca o una prenda de vestir. Los directores de fotografía crean un boceto rápido en gráficos por ordenador de cualquier personaje que quieran dar vida, y mapean el esqueleto del personaje en el metraje de acción en vivo, teniendo en cuenta la posición, la escala, la orientación y el movimiento.
+
+\begin{figure}[h!]
+    \centering
+    \animategraphics[loop,autoplay,width=0.8\linewidth]{10}{/TheLastOfUs/TheLastOfUs-}{0}{103}
+    \caption{Mocap en el videojuego The Last Of Us}
+    \label{fig:TheLastOfUs}  
+\end{figure}
 
 Esto es mucho más asequible ya que se basa principalmente en software y no requiere de tanto hardware. En un plató para grabar una película o un videojuego, primero se crea el personaje animado digitalmente y, mientras se graba, pueden mapear este personaje sobre el actor mediante captura de movimiento, para que puedan ver instantáneamente cómo el movimiento se traduce en el personaje, junto con la iluminación y los ángulos preferidos. Esto se conoce como cinematografía virtual.
 
@@ -237,7 +236,29 @@ Como base para el estudio de la captura de movimientos y las tecnologías dispon
 
 \section{Trabajo relacionado}
 
-Para la realización de este proyecto se han revisado trabajos anteriores en el área de los \textit{Reactive Virtual Trainers}, además de cuáles son las tecnologías más emergentes en el mercado. En este apartado se describirán los análisis de esos proyectos, y de este modo, poder aclarar y enfocar el desarrollo de este proyecto.
+Para la realización de este proyecto se han revisado trabajos anteriores en el área de los \textit{Reactive Virtual Trainers}. En este apartado se describirán los análisis de esos proyectos, y de este modo, poder aclarar y enfocar el desarrollo de este trabajo.
 
-% \subsection{Captura de movimiento en la danza}
-% Uno de los campos en donde la captura de movimiento aparece es en la danza, y un claro ejemplo es \citep{Kyan:2015:ABD:2753829.2735951}. En este artículo se describe una forma de evaluar y visualizar en tiempo real, los movimientos de la danza de ballet. Para desempeñar esa tarea utilizan como recurso la tecnología de captura de movimiento \textit{Kinect}, y gracias a ella, registran los movimientos de bailarines profesionales, de modo que , sean una base para las comparaciones de movimientos. Estos, a su vez, son representados como un \textit{espacio de posturas} en forma de trayectorias de gestos. La evaluación de la coreografía empezaría cuando detecte al bailarín aficionado y con el fin de proporcionar una puntuación para cada coreografía, se compara la posición alineada y velocidad del bailarín aficionado con las correspondientes del bailarín profesional.
+\subsection{Captura de movimiento en actividades físicas}
+
+Uno de los factores importantes en la ejecución de actividades físicas es el evitar lesión por mala práctica. En esta tesis \cite{Staab:Thesis:2014} implementan un entrenador virtual para promover la actividad saludable , y enseñar de una forma correcta, la realización de las ejercicios para prevenir lesiones. Los movimientos del entrenador virtual son generados a partir de la clasificación y el análisis de ejercicios previamente grabados, creando así, un modelo estadístico de cada actividad. Cuando el usuario realiza la tarea se proporcionado un porcentaje de acierto para la posición, una indicación para su corrección y los grados de rotación que se deben de aplicar. Aunque, realiza una corrección precisa, tiene una decadencia cuando los movimientos son giros sobre el mismo eje.
+
+El siguiente proyecto denominado \texttt{OnlineGym} \cite{Paredes2014} , es un  trabajo basado en plataformas de mundos virtuales 3D que permite a los usuarios interactuar mediante el uso de un dispositivo de captura de movimiento, en concreto con \texttt{kinect}. Este escenario proporciona la experiencia de una participación conjunta en una sesión de gimnasia grupal. El proyecto está dirigido a usuarios de edad avanzada, que tal vez no puedan participar en sesiones regulares de entrenamiento fuera de sus hogares. Para activar las habilidades motoras y de socialización, se realizan sesiones de \textit{fitness} en grupo para contribuir a su bienestar físico y mental. 
+
+Otro proyecto que falta por mencionar es el \cite{Ruttkay2008}, el cual desarrolla un entrenador virtual mejorado, que además de presentar los ejercicios físicos a realizar, proporciona un \textit{feedback} en el momento apropiado. Gracias a esta faceta, el \textit{Intelligent Virtual Agent} (IVA) sería capaz de introducir y estructurar los diferentes ejercicios. El entrador virtual tendrá una motorización del pulso asociado al usuario para ajustar el ritmo del ejercicio.
+
+\subsection{Captura de movimiento en la danza}
+
+Uno de los campos en donde la captura de movimiento aparece es en la danza, y un claro ejemplo es \cite{Kyan:2015:ABD:2753829.2735951}. En este artículo se describe una forma de evaluar y visualizar en tiempo real, los movimientos de la danza de ballet. Para desempeñar esa tarea utilizan como recurso la tecnología de captura de movimiento \texttt{kinect}, y gracias a ella, registran los movimientos de bailarines profesionales, de modo que, sean una base para las comparaciones de movimientos. Estos, a su vez, son representados como un \textit{espacio de posturas} en forma de trayectorias de gestos. La evaluación de la coreografía empezaría cuando detecte al bailarín aficionado y con el fin de proporcionar una puntuación para cada coreografía, se compara la posición alineada y velocidad del bailarín aficionado con las correspondientes del bailarín profesional.
+
+\subsection{Captura de movimiento en rehabilitación}
+
+Un punto fuerte para la utilización de la captura de movimiento sería aplicarla para ayudar a la gente con lesiones, y de este modo, realizar terapia de rehabilitación. Con esta idea se ha desarrollado el proyecto \cite{li2014development}, que elabora un entrador virtual para el uso de fisioterapeutas y pacientes en programas de fisioterapia con ejercicios físicos. Permite al terapeuta adaptar los ejercicios a las necesidades de cada paciente de un modo individual. Los pacientes pueden escoger entre diferentes programas y seguir un avatar de entrenamiento, a su vez, los movimientos que simulan los avatares son grabados previamente en función de las necesidades del paciente. Uno de los puntos que sacan en claro en este proyecto es, que los juegos de ordenador han demostrado el potencial para mejorar el apego a la rehabilitación por parte de los pacientes. Del mismo modo, el \textit{feedback} visual ofrecido a los pacientes le hace involucrarse de manera más efectiva con las terapias.
+
+Otro proyecto con una terapia más específicas es \cite{sin2013additional}, que estudia los efectos de un entrenador virtual para los paciente con hemiplejía\footnote{Parálisis de un lado del cuerpo causada por una lesión cerebral o de la medula espinal.}, haciendo énfasis en la función de las extremidades superiores, incluyendo el rango de movimiento, la función motora y la destreza manual. El grupo de usuarios que padecen esta parálisis participaron en diversas pruebas, en las que se utilizaba la tecnología implementada con \texttt{Nintendo Wii} y la tecnología de captura de movimiento de \texttt{Xbox} con \texttt{Kinect} entre otras. Las pruebas se centraban en juegos que utilizaban movimientos que afectaban las extremidades superiores. Los resultados de los ensayos demuestran una mejoría significativa de los pacientes que realizaron la prueba con la tecnología \texttt{kinect}, esto es debido, a que pueden desempeñar toda la tarea sin tener que sujetar un control remoto como pasa en \texttt{Nintendo Wii}. Siendo este, un factor añadido para realizar un movimiento con mayor amplitud o ejecutar más cantidad de movimientos.
+
+\subsection{Captura de movimiento en artes marciales}
+
+Otros de los campos donde es útil la captura de movimiento, ya que es necesario la repetición para lograr entender y dominar las técnicas, son en las artes marciales. En este proyecto de master \cite{Keerthy:Thesis:2012}  se diseña un maestro virtual de Kung fu con el dispositivo de \texttt{Kinect}. Previamente se graban las técnicas del maestro en el arte marcial, para realizar futuras comparaciones con usuarios aficionados que quieran adentrarse y aprender en el mundo del Kung fu. Aunque existen muchos algoritmos de comparación, en este trabajo se ha elegido, el algoritmo \textit{Dynamic Time Warping} , que utiliza la fórmula  distancia euclídea. Una de las principales ventajas del algoritmo \textit{Dynamic Time Warping} es, superar los problemas de análisis de movimiento en velocidad y tiempo. La distancia euclidiana se define como la distancia entre dos puntos de un espacio euclídeo, la cual se deduce a partir del teorema de Pitágoras.\\
+
+Dentro del mismo ámbito de captura de movimiento en artes marciales, se encuentra este proyecto\cite{chua2003training}, el cual desarrolla un entrenador virtual de Tai Chi. La diferencia con el proyecto de  \cite{Keerthy:Thesis:2012} se refleja en la forma de  comparar el movimiento, debido a que coloca los diferentes movimientos del profesor alrededor del estudiante, de este modo, le ofrece la opción de superponer su cuerpo directamente sobre el movimiento del profesor virtual para efectuarlo correctamente. 
+

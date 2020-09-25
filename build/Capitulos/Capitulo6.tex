@@ -1,0 +1,36 @@
+\chapter{Discusión, Conclusiones y Trabajo futuro }
+\label{cap6:sec:Conclusiones y Trabajo futuro}
+
+%-------------------------------------------------------------------
+\section{Discusión}
+
+Como se mencionó en la introducción, uno de los objetivos al desarrollar este sistema era que pudiese funcionar con tecnología emergente en el mercado capaz de capturar los movimientos de un usuario, de manera que fuera un sistema viable económicamente hablando, lo cual restringe notablemente el abanico de posibilidades a considerar. La configuración elegida para el sistema utiliza seis sensores adheridos al cuerpo del usuario proporcionado por \texttt{VR}. Esto limita la capacidad del sistema de percibir los movimientos más complejos en el caso de utilizar dos estaciones base, las cuales son las encargadas de recoger la información de los seis sensores ópticos. Pueden existir casos en los que rotaciones del torso no se detecten de forma correcta lo cual puede generar confusiones entre distintos miembros del avatar que tengan simetría axial (tras el giro, el sistema confunde la posición exacta de cada uno de los componentes). Se espera en el futuro poder ampliar este trabajo con la utilización de un mayor numero de sensores y unas gafas de realidad virtual más modernas.
+
+Por otro lado, en algunos de los trabajos estudiados (e.g. \cite{Keerthy:Thesis:2012,Kyan:2015:ABD:2753829.2735951}) se utilizan técnicas más sofisticadas para analizar los movimientos de los usuarios que las usadas en este trabajo. Si bien tales técnicas pueden ser útiles en niveles de aprendizaje avanzados, cuando se trata de principiantes en capoeira, no existen grandes diferencias respecto a técnicas más modestas. Esto es así porque los movimientos de un aprendiz son más simples y, por tanto, la grabación de los movimientos del entrenador también lo son. Por ello, un método más sencillo de grabación de movimientos se traduce en dos claras ventajas: primero, es menos complejo y más rápido de calcular; y, segundo, el resultado del análisis es más fácilmente traducible a un sistema como la realidad aumentada, proporcionando al aprendiz aclaraciones útiles acerca de cómo mejorar la realización de las técnicas.
+
+\section{Conclusiones}
+
+A lo largo del presente trabajo se ha descrito el proceso por el cual se ha desarrollado un entrenador virtual de capoeira a partir de la grabación previa de los movimientos de un experto realizada con el dispositivos de \textit{VR}. Por otro lado, el usuario, haciendo uso del \textit{Smartphone} hará un análisis de los movimientos capturadores por el profesor, que servirá para identificar posibles errores en su ejecución.
+
+Una vez grabados las transiciones, se ofrece una aplicación capaz de visualizar los movimientos que fueron ejecutados de manera errónea. En este proceso se debe enfatizar la capacidad de los dispositivos de \texttt{VR} para capturar los movimientos de forma correcta, un hecho relevante si además tenemos en cuenta que estamos antes una tecnología puntera en el mercado, y con un coste moderado.
+
+Hay que destacar los beneficios que puede conllevar utilizar un entrenador virtual, que engloba, desde la comodidad de trabajar desde casa, hasta tener un \textit{feedback} dedicado, personal e inmediato. Del mismo modo, se trata de un sistema de entrenamiento mediante juego, lo cual potencia el aprendizaje y la motivación, como se aprecia en la escena de alumno, pudiendo interactuar con el mundo real. Permite establecer la dificultad deseada para grabar los movimientos, lo cual hace que se pueda adaptar a las necesidades y capacidades de los distintos alumnos. Se trata de un entorno intuitivo tanto para el profesor como para el alumno. 
+
+Aunque aún no se ha realizado una evaluación extensa con usuarios novatos y expertos en capoeira, si se han llevado a cabo pruebas preliminares para comprobar el correcto funcionamiento de las aplicaciones y la fiabilidad de los comentarios de los usuarios que las han utilizado para corregir sus defectos. Dichas pruebas se han realizado con una pequeña muestra de usuarios de distintos niveles y los resultados preliminares muestran que, al nivel al que se han realizado las pruebas y con movimientos no excesivamente complejos de cuerpo entero, el funcionamiento de las aplicaciones es rápido y los resultados de los análisis y las posibles observaciones de los errores se acercan bastante a la realidad.
+
+\section{Trabajo futuro}
+
+Este proyecto tiene potencial en el campo de entrenamiento de actividades físicas, ya que comparando el movimiento del usuario con el de un experto se ofrece un \textit{feedback} visual. De este modo, el usuario podrá corregir su técnica en caso de que cometa algún tipo de error. 
+
+Una funcionalidad que se puede implementar en un futuro sería la grabación y comparación de movimientos en tiempo real entre el profesor y el alumno. Cuando el alumno se pusiera otra gafas de realidad virtual y los sensores en el cuerpo, podrían incluso luchar en la misma zona virtual, pero cada uno en una ubicación completamente distinta
+
+Otra futura ampliación trata de añadir más funcionalidad al experto que graba los movimientos. Con ello, tendría la posibilidad de manejar y modificar los movimientos grabados de una forma sencilla, similar al diseño realizado en este proyecto, pero sin la necesidad de estar en el pc, sino dentro de la realidad virtual.
+
+Por otro lado, se plantea la necesidad de incluir métodos más sofisticados para el análisis de los movimientos, similares a los usados en \cite{Keerthy:Thesis:2012,Kyan:2015:ABD:2753829.2735951} para permitir un análisis más fino de los movimientos que proporcione resultados de mayor utilidad para practicantes avanzados de capoeira.
+
+Este procedimiento de análisis de movimiento se puede aplicar también en el ámbito de la medicina para realizar diferentes tipos de rehabilitación. En este caso serviría para que el paciente pudiera analizar los movimientos que él no puede hacer, como, por ejemplo, una lesión de una pierna, de modo que observando lo movimientos que debería realizar, estimularía su cerebro para ejecutarlo de la forma correcta.
+
+Otro factor para mejorar la captura de movimiento sería añadir más estaciones base, para lograr una mayor precisión en la ejecución de los movimientos que recogen los sensores, de este modo la captura de movimientos llegaría a ser digna de un sistema profesional.
+
+Finalmente, también se contempla la grabación y el análisis de los movimientos de más de un usuario de manera simultánea. De esta manera, se podrán reproducir situaciones similares al trabajo por parejas que tiene lugar en una \textit{roda} de capoeira, donde se ponen en práctica técnicas de combate cuerpo a cuerpo.
+

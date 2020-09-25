@@ -138,10 +138,10 @@ Las tres plataformas son perfectamente capaces de proporcionar las herramientas 
 
 La decisión final radicó en utilizar un ecosistema en el cual no existiera una limitación en la plataforma y poder aprovechar la potencia del \textit{SDK}, junto con los numerosos servicios que ofrecía. Por todo ello, se eligió \texttt{ARCore} de Google, ya que brinda una mayor flexibilidad en cuanto a los términos donde desplegar la aplicación.
 
-\section{Grabación y desarrollo de \textit{Mocap} en VR}
+\section{Metodología y desarrollo de \textit{Mocap} en VR}
 \label{cap5:sec:capitulo5}
 
-Como el objetivo principal de este proyecto es la captura de movimiento para entrenamiento de actividades físicas en VR, se selecciona como ejemplo de estudio, \texttt{VRIK Calibration}, dado su potencial para calibrar las características personales del profesor, y el seguimiento realizado por el avatar virtual.
+Como el objetivo principal de este proyecto es la captura de movimiento para entrenamiento de actividades físicas en VR, se selecciona como estudio, \texttt{VRIK Calibration}, dado su potencial para calibrar las características personales del profesor, y el seguimiento realizado por el avatar virtual.
 
 \subsection{Investigación base}
 
@@ -169,11 +169,6 @@ Tras revisar las restricciones que se pueden utilizar en las rotaciones de los h
 
 Ya en la escena \texttt{VRIK Calibration} se observa una demostración de como usar el calibrador VRIK, de modo que se ayude a calibrar las posiciones donde se encuentran los componentes de VR que harán que el sistema de captura de movimiento tome forma.
 
-Para que un sistema \textit{Mocap} sea de calidad y dé la sensación de realismo al reproducir los movimientos grabados, es necesario como mínimo tener tres puntos de seguimiento, como por ejemplo las gafas de realidad virtual y dos controles, uno para cada mano. Este tema sobre como captura los movimientos los sensores ópticos se trato en la sección \ref{cap3:sec:realidadVirtual}.
-
-Visualizando la escena de demostración \texttt{VRIK Calibration} y aunque con tres puntos de seguimiento se puede hacer un \textit{Mocap} decente, se decidió utilizar una captura de movimiento con seis puntos de detección. Esta decisión se llevó a cabo ya que el arte marcial afrobrasileño (capoeira) realiza movimientos complejos y utiliza todas las partes del cuerpo, de modo que era indispensable captar toda esa información de la mejor manera posible. 
-Para ello se desarrolló un script(\texttt{VICIK}) específico para este fin, el cual se describirá más adelante.
-
 Al adentrarnos en los componentes que resuelven el problema ocasionado por la cinemática inversa relacionado con modelos humanoides, se observa el script \texttt{VRIK} que a continuación se describen en los siguientes puntos:
 
 \begin{itemize}
@@ -182,13 +177,25 @@ Al adentrarnos en los componentes que resuelven el problema ocasionado por la ci
     \item \texttt{VRIK.solver}: es el encargado de realizar junto con la asignación de los seis componentes que vamos a utilizar para la captura de movimiento, que todo el sistema funcione de forma fluida y estable. Pudiendo ajustar la posición y rotación del avatar virtual, para que coincida con la orientación de cada uno de los huesos del profesor.
 \end{itemize}
 
-\subsection{Desarrollo de la grabación de movimientos}
+\subsection{Desarrollo para la grabación de movimientos}
 
 Después de haber realizado la investigación y compresión del material que se puede aprovechar para realizar una captura de movimiento, se plantearon una serie de desafíos e implementaciones que se deben realizar.
 
-En primer lugar se creó el script \texttt{VICIK} el cual gestionará el conjunto de la captura de movimiento. Para ello fue necesario determinar un \textit{Game Object} (clase base para todas las entidades en una escena en Unity) de tipo \textit{VRIK}, el cual ya nos permitía acceder a todas las características de este objeto, y por lo tanto modificar las referencias del script \textit{VRIK} de forma ordenada.
+Para que un sistema \textit{Mocap} sea de calidad y dé la sensación de realismo al reproducir los movimientos grabados, es necesario como mínimo tener tres puntos de seguimiento, como por ejemplo las gafas de realidad virtual y dos controles, uno para cada mano. Este tema sobre como captura los movimientos los sensores ópticos se trato en la sección \ref{cap3:sec:realidadVirtual}.
+
+Visualizando la escena de \texttt{VRIK Calibration} y aunque con tres puntos de seguimiento se puede hacer un \textit{Mocap} decente, se decidió utilizar una captura de movimiento con seis puntos de detección. Esta decisión se llevó a cabo ya que el arte marcial afrobrasileño (capoeira) realiza movimientos complejos y utiliza todas las partes del cuerpo, de modo que era indispensable captar toda esa información de la mejor manera posible. 
+Para ello se desarrolló un script(\texttt{VICIK}) específico para este fin, el cual se describirá a continuación.
+
+En primer lugar se creó el script \texttt{VICIK} el cual gestionará el conjunto de la captura de movimiento. Para ello fue necesario determinar un \textit{Game Object} (clase base para todas las entidades en una escena en Unity) de tipo \textit{VRIK}, el cual ya nos permitía acceder a todas las características de este objeto, y por lo tanto modificar las referencias del script \textit{VRIK} de forma ordenada (véase Figura \ref{fig:GrafoMocap}). 
 
 Como se describió anteriormente, \texttt{VRIK.references}, contiene todas las referencias óseas del cuerpo humanoide a utilizar, pero en el caso de que el modelo 3D(avatar) que vayamos a utilizar tenga una jerarquía de huesos diferente a la utilizada en VRIK será necesario pasar un previo proceso de \textit{rigging}. Para realizar este proceso, tras crear nuestro avatar con \texttt{Adobe Fuse Character Creator}, subiremos dicho modelo al sistema de \textit{Auto-Rigger} de Mixamo.
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.3]{GrafoMocap}
+    \caption{Grafo sobre la creación del entorno del \textit{Mocap}}
+    \label{fig:GrafoMocap}
+\end{figure} 
 
 Con el avatar rigueado correctamente, procedemos a automatizar el proceso de asignación de las referencias de los huesos del avatar en el script. El método \texttt{AutoReferences()} realizar dicha acción. Previamente se crearan las referencias con los nombres de los huesos que utiliza \texttt{VRIK.references}, para posteriormente crear otro método \texttt{GetBonesReferences()} que vaya recorriendo todas las referencias y vaya asignado los componentes creados, con los utilizados por \texttt{VRIK}. Con todo esto, cualquier avatar que contenga los huesos creados por \texttt{Adobe Fuse Character Creator} o cualquier \textit{software similar} tendrá este proceso automatizado, y no será necesario realizar una asignación manual para cada avatar.
 
@@ -243,11 +250,9 @@ En primera instancia se estudió como realizar el análisis de los movimientos c
 
 Visualizando la gran cantidad de estudios relacionados con \textit{OpenCV} y el análisis de movimientos, no dejaría de ser un estudio más sobre como analizar y aprender este tipo de arte marcial. Dado que la tecnología a evolucionado en gran medida en estos últimos años, se opto por utilizar una herramienta novedosa y en plena evolución, como es la realidad aumentada.
 
-Para este apartado se observó el desarrollo realizado en VR sobre la grabación de movimiento explicada anteriormente. En esta sección el alumno podrá tener un\textit{feedback} visual inmediato y novedoso, de como poder realizar un movimiento de forma correcta en el arte marcial brasileño (capoeira).
-
 Con el planteamiento de utilizar \texttt{AR} como base para el análisis de los movimientos del profesor y el posterior aprendizaje del alumno, se optó por desarrollar esta parte del proyecto con \texttt{ARCore} (ya se describieron los detalles de esta elección en la sección \ref{cap5:sec:ARCore}).
 
-De todo el contenido incluido en el paquete de \texttt{ARCore} para Unity, se selecciona como ejemplo de estudio, \texttt{HelloAR}, dado el gran potencial que ha incluido \texttt{ARCore} en este escenario, un nuevo sistema de oclusión ambiental denominado \textit{Depth API}\footnote{\url{https://developers.google.com/ar/develop/unity/depth/overview}}. Este sistema utiliza la cámara RGB de los dispositivos móviles para crear mapas de profundidad, para posteriormente utilizar esta información y hacer que los objetos virtuales aparezcan con precisión 
+De todo el contenido incluido en el paquete de \texttt{ARCore} para Unity, se selecciona como estudio, \texttt{HelloAR}, dado el gran potencial que ha incluido \texttt{ARCore} en este escenario, un nuevo sistema de oclusión ambiental denominado \textit{Depth API}\footnote{\url{https://developers.google.com/ar/develop/unity/depth/overview}}. Este sistema utiliza la cámara RGB de los dispositivos móviles para crear mapas de profundidad, para posteriormente utilizar esta información y hacer que los objetos virtuales aparezcan con precisión 
 
 Para entender un poco mejor como utiliza \texttt{ARCore} el sistema de profundidad vamos a explicar cómo realiza este proceso este \textit{SDK} de realidad aumentada (véase Figura \ref{fig:depth-values-diagram}). En la geometría del mundo real observamos un punto \texttt{A}, y un punto \texttt{a} 2D que representa el mismo punto pero en la imagen con el mapa de profundidad. El valor dado por esta \textit{API} es igual a la longitud de \texttt{CA} proyectada sobre el eje principal. Al trabajar con este sistema es importante destacar que los valores del mapa de profundidad no son la longitud del rayo \texttt{CA}, sino la proyección del mismo.
 
@@ -258,19 +263,15 @@ Para entender un poco mejor como utiliza \texttt{ARCore} el sistema de profundid
     \label{fig:depth-values-diagram}
 \end{figure} 
 
-Ya en la escena de ejemplo \texttt{HelloAR} se visualiza como la API necesita tener un mapa del entorno a utilizar para poder colocar los objetos virtuales en el mundo real, permitiendo que \texttt{ARCore} establezca un seguimiento completo, detectando la geometría de la superficie con la que se quiere interactuar. Este proceso lo realiza el script \texttt{DetectedPlaneVisualizer} necesario en la utilización de este \textit{SDK}.
-
-Otro de los scripts necesarios es \texttt{ARCoreSesion}, el cual determina cual de las dos cámaras (frontal o trasera) se utilizará en la aplicación a desarrollar. Además serán necesarios dos archivos de configuración denominados \textit{SesionConfig y CameraConfigFilter}. Estos archivos con extensión \textit{.asset de Unity} se utilizan para detallar la configuración de la cámara que \texttt{ARCore} utiliza para acceder al sensor de la cámara para una sesión determinada. Estos detalles incluyen, por ejemplo, la velocidad de fotogramas que captura el objetivo y si la cámara a utiliza un sensor de profundidad.
-
-Al crear una nueva sesión de \texttt{ARCore}, este utiliza un filtro para determinar la configuración de la cámara que mejor coincida con la lista de configuraciones disponibles. Se puede utilizar el recurso \textit{CameraConfigFilter} para reducir las configuraciones de cámaras disponibles en una serie de dispositivos en tiempo de ejecución, según las necesidades de la aplicación.
-
-Para esta escena de ejemplo, existe un script denominado \textit{HelloARController} el cual controla la instancia de la cámara a utilizar y como colocar los objetos 3D en el mundo real, pudiendo utilizar un plano vertical, uno horizontal o un punto fijo en el entorno. El problema radica en que este script instancia objetos 3D tantas veces como toques la pantalla, por lo tanto desarrollaremos un script propio denominado \texttt{ ARController} el cual se encargará de realizar una sola instancia del modelo 3D del profesor y otro script denominado \texttt{MovementManager} que gestionará de forma automática todos los movimientos grabados previamente en VR para ser asignados a la única instancia de la escena.
+Ya en la escena \texttt{HelloAR} se visualiza como la API necesita tener un mapa del entorno a utilizar para poder colocar los objetos virtuales en el mundo real, permitiendo que \texttt{ARCore} establezca un seguimiento completo, detectando la geometría de la superficie con la que se quiere interactuar. Este proceso lo realiza el script \texttt{DetectedPlaneVisualizer} necesario en la utilización de este \textit{SDK}.
 
 \subsection{Desarrollo del análisis de movimientos}
 
 Después de haber realizado la investigación y compresión del material necesario para utilizar \texttt{ARCore} como sistema de realidad aumentada, se procede a solventar una serie de problemas o necesidades surgidas durante la investigación.
 
-Para crear el entorno de AR, es necesario la utilización de uno de los \textit{prefabs} de \texttt{ARCore}, \texttt{ARCoreDevices} el cual incluye la configuración de la sesión a utilizar en realidad aumentada (\textit{SesionConfig y CameraConfigFilter}). En este escenario donde vamos a desarrollar una aplicación para el análisis visual de los movimientos grabados por el profesor en VR es necesario establecer unas configuraciones avanzadas detalladas a continuación:
+Para este apartado se observó el desarrollo realizado en VR sobre la grabación de movimiento explicada anteriormente. En esta sección el alumno podrá tener un\textit{feedback} visual inmediato y novedoso, de como poder realizar un movimiento de forma correcta en el arte marcial brasileño (capoeira).
+
+Con el fin de crear un entorno de AR, es necesario la utilización de uno de los \textit{prefabs} de \texttt{ARCore}, \texttt{ARCoreDevices} el cual incluye la configuración de la sesión a utilizar en realidad aumentada (\textit{SesionConfig y CameraConfigFilter}). En este escenario donde vamos a desarrollar una aplicación para el análisis visual de los movimientos grabados por el profesor en VR es necesario establecer unas configuraciones avanzadas detalladas a continuación:
 
 \begin{itemize}
     \item \texttt{Config.PlaneFindingMode}: selecciona el comportamiento del sistema de superficie a detectar. En este desarrollo utilizaremos un sistema que solo detecte planos horizontales.
@@ -281,7 +282,13 @@ Para crear el entorno de AR, es necesario la utilización de uno de los \textit{
 
 Como ocurría en el escenario de VR, es necesario la utilización de un componente que actúa como un \texttt{Singleton} (véase la Figura\ref{fig:Singleton}), de modo que solo puede existir un objeto de tipo \texttt{FirstPersonCamera} en la escena. Este objeto como su propio nombre indica, se trata de la cámara que utiliza el sistema para mostrar toda la información desarrollada en realidad aumentada. Este componente estará incluido en el script que se describe a continuación.
 
-Para realizar todo el control de la aplicación de AR, se desarrolló el script \texttt{ARController}. Este script controla los siguientes objetos de Unity necesarios para dar forma a esta aplicación:
+Otro de los scripts necesarios es \texttt{ARCoreSesion}, el cual determina cual de las dos cámaras (frontal o trasera) se utilizará en la aplicación a desarrollar. Además serán necesarios configurar dos archivos denominados \textit{SesionConfig y CameraConfigFilter}. Estos archivos con extensión \textit{.asset de Unity} se utilizan para detallar la configuración de la cámara que \texttt{ARCore} utiliza para acceder al sensor de la cámara para una sesión determinada. Estos detalles incluyen, por ejemplo, la velocidad de fotogramas que captura el objetivo y si la cámara a utiliza un sensor de profundidad.
+
+Al crear una nueva sesión de \texttt{ARCore}, este utiliza un filtro para determinar la configuración de la cámara que mejor coincida con la lista de configuraciones disponibles. En el desarrollo de esta aplicación se utilizó el recurso \textit{CameraConfigFilter} para reducir las configuraciones de cámaras disponibles en una serie de dispositivos en tiempo de ejecución, según las necesidades de dadas.
+
+Para la creación de esta escena, existe un script denominado \textit{HelloARController} el cual controla la instancia de la cámara a utilizar y como colocar los objetos 3D en el mundo real, pudiendo utilizar un plano vertical, uno horizontal o un punto fijo en el entorno. El problema radica en que este script instancia objetos 3D tantas veces como toques la pantalla, por lo tanto desarrollaremos un script propio denominado \texttt{ ARController} el cual se encargará de realizar una sola instancia del modelo 3D del profesor y otro script denominado \texttt{MovementManager} que gestionará de forma automática todos los movimientos grabados previamente en VR para ser asignados a la única instancia de la escena.
+
+Con el objetivo de tener un mayor control de la aplicación de AR, se desarrolló el script \texttt{ARController}. Este script controla los siguientes objetos de Unity necesarios para dar forma a esta aplicación:
 
 \begin{itemize}
     \item \texttt{Objecto de tipo \textit{DepthMenu}}: tipo de Mapa de profundidad que se utilizará, se podrá activar o desactivar en todo momento en tiempo de ejecución (para que los dispositivos no compatibles con este sistema puedan utilizar la aplicación).
@@ -295,7 +302,7 @@ Teniendo todo esto, iniciamos el proceso de automatizar la asignación de los mo
 
 \begin{figure}[h!]
     \centering 
-    \includegraphics[scale = 0.5]{AnimatorController}
+    \includegraphics[scale = 0.3]{AnimatorController}
     \caption{Asignación automatizada de los movimientos grabados en el \textit{Mocap}}
     \label{fig:AnimatorController}
 \end{figure} 
@@ -304,19 +311,94 @@ Además de todo este proceso, se creó un método el cual creará los botones de
 
 En el planteamiento de como el alumno analizaría los movimientos grabados por el profesor para su posterior aprendizaje, se decidió que esta parte del proyecto se iba a desarrollar en realidad aumentada (como se explicó en la sección \ref{cap5:sec:panteamientoOpenCV}) debido a su gran potencial. 
 
-Para este fin, se utilizó un sistema capaz de reproducir, pausar, aumentar y disminuir la velocidad del movimiento realizado por el profesor, para así poder analizar en 360º cada una de las poses que realiza el profesor para ejecutar la transición en cada movimiento del arte marcial brasileño (capoeira). El alumno podrá visualizar diferentes movimientos, dependiendo del nivel elegido al iniciar la aplicación, de modo que el profesor previamente ha grabado movimientos para todos los niveles seleccionables (principiante e intermedio). Todo este sistema ha sido desarrollado en un script denominado \textit{UIController}, creando instancias para cada uno de los botones seleccionables a la hora de reproducir los movimientos, además de los botones de reproducción, pause y el \textit{slider} capaz de aumentar el ritmo que utilizar el profesor en el movimiento capturado en VR.
+Para este fin, se utilizó un sistema capaz de reproducir, pausar, aumentar y disminuir la velocidad del movimiento realizado por el profesor, para así poder analizar en 360º cada una de las poses que realiza el profesor para ejecutar la transición en cada movimiento del arte marcial brasileño (capoeira).(véase Figura \ref{fig:GrafoAR}) El alumno podrá visualizar diferentes movimientos, dependiendo del nivel elegido al iniciar la aplicación, de modo que el profesor previamente ha grabado movimientos para todos los niveles seleccionables (principiante e intermedio). Todo este sistema ha sido desarrollado en un script denominado \textit{UIController}, creando instancias para cada uno de los botones seleccionables a la hora de reproducir los movimientos, además de los botones de reproducción, pause y el \textit{slider} capaz de aumentar el ritmo que utilizar el profesor en el movimiento capturado en VR.
 
-
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.3]{GrafoAR}
+    \caption{Análisis de lo los movimientos grabados en el \textit{Mocap}}
+    \label{fig:GrafoAR}
+\end{figure} 
 
 Otro de los sistemas importantes a desarrollar para dar un efecto más realista es la utilización de la estimación de luz en AR, por defecto viene deshabilitada. Para este tipo de sistemas se pueden utilizar dos tipos de modos de luz ambiental, definidos a continuación:
 
 \begin{itemize}
-    \item \texttt{HDR Environmental}: el modo de estimación de luz se establece con o sin reflejos, de modo que el componente de luz ambiental en la escena actualizará la rotación y el color de la luz, además de modificar los componentes de Unity \textit{ambient probe} mediante la propiedad \texttt{RenderSettings.ambientProbe} y \textit{ reflection probe } mediante la propiedad \texttt{RenderSettings.customReflection}.
+    \item \texttt{HDR Environmental}: el modo de estimación de luz se establece con o sin reflejos, de modo que el componente de luz ambiental en la escena actualizará la rotación y el color de la luz, además de modificar los componentes de Unity \textit{ambient probe} mediante la propiedad \texttt{RenderSettings.ambientProbe} y \textit{reflection probe} mediante la propiedad \texttt{RenderSettings.customReflection}.
     \item \texttt{Ambient Intensity}: en este modo de estimación de luz, el componente de luz en la escena de Unity fijará \textit{\_GlobalLightEstimation} propiedad que se utiliza en la propiedad de\texttt{ARCore}  \texttt{DiffuseWithLightEstimation} y \texttt{SpecularWithLightEstimation} y otros \textit{shaders} personalizados para ajustar la salida de color final para que coincida con el color de la imagen de la cámara.
 \end{itemize}
 
 En el script denominado \texttt{ARController} se asigna mediante el método \texttt{SetLightEstimationMode()} el tipo de estimación de luz a utilizar en el proyecto de AR, pasandole al método de tipo \texttt{LightEstimationMode} el parámetro \texttt{EnvironmentalHDRwithReflections}.
 
+
+\section{Grabación de los movimientos con expertos}
+
+En esta etapa del proyecto, estaba prevista la grabación de todos los movimientos con gente experta en la práctica del arte marcial brasileño (capoeira), pero dados los impedimentos ocasionados por la \textit{COVID-19}, no se pudo completar el conjunto de los movimientos deseados, por lo tanto, hubo que utilizar algunas grabaciones de otro proyecto desarrollado en años anteriores \cite{VIC} y adaptar los datos obtenidos al uso de este tipo de \textit{Mocap}.
+
+\subsection{Proceso de grabación de los movimientos}
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale=0.25]{GrafoVR}
+    \caption{Transición de la grabación de movimientos mediante \textit{Mocap}}
+    \label{fig:GrafoVR}
+\end{figure} 
+
+Para la realización de este proceso, fue necesario grabar una batería de movimientos del arte marcial brasileño (capoeira) y seleccionar los que fueron captados de una forma más precisa y eficiente. Para facilitar la grabación del profesor, y tener un espectro de movimientos superior, se optó por capturar varias repeticiones del mismo movimiento. 
+
+Dado que los componentes de captura de movimiento utilizados permiten emular la presencia de auriculares y controladores de realidad virtual, es necesario que el profesor se habitué a la utilización de este tipo de sistemas, para que el proceso de grabación se realice de una forma más eficiente.
+
+El proceso desarrollado para la grabación de los movimientos se diseñó siguiendo una máquina de estados capaz de alternar entre la metodología elegida para la captura de movimientos en el arte marcial brasileño(capoeira) y la parte analítica y visual de los movimientos grabados por el profesor. 
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale=0.4]{Datos}
+    \caption{Datos capturados en otro sistema de \textit{Mocap}}
+    \label{fig:Datos}
+\end{figure}
+
+Inicialmente para grabar los movimientos del \textit{Mocap} desarrollado, es necesario equiparse de seis dispositivos (gafas de \textit{VR}, dos controladores, uno para cada mano, un \textit{tracker} situado en la cadera, y dos \textit{trackers} más situados en cada uno de los pies). Tras el equipamiento, el profesor se dirige al entorno donde se grabarán los movimientos. En este apartado (véase Figura \ref{fig:GrafoVR}), el profesor se verá a si mismo en un espejo, de este modo podrá comprobar de una manera muy precisa cual está siendo el resultado de la grabación. En todo momento, mientras se encuentra grabando podrá pausar la grabación, reanudarla en el punto exacto donde la dejó o detenerla si el resultado no es el deseado. Tras finalizar la grabación, el sistema guardará la transición de los movimientos en una base de datos compartida entre la aplicación de \textit{VR} y \textit{AR}. De este modo, en cuanto el movimientos ha sido grabado, tanto el profesor podrá revisarlo para ver su resultado, como el alumno podrá visualizarlo en su \textit{Smartphone} mediante la aplicación de AR.
+
+Otro de los puntos importante es el análisis de los movimientos previamente grabados. El usuario podrá visualizar todos los movimientos que se encuentran en la base de datos, de modo que podrá revisar las veces que sea necesario, la transición de cada uno de los huesos del cuerpo ejecutando cada una de las poses. En el caso de que el movimiento grabado no haya quedado preciso, el profesor podrá borra dicho movimiento y trasladarse a la zona de grabación para crearlo de nuevo.
+
+Este sistema se creó principalmente para que el profesor pudiera grabar los movimientos que el alumno debería practicar, pero igualmente este sistema dispone de un modo adicional al análisis tratado en \textit{AR}. El alumno podría igualmente practicar los movimientos que el profesor le habría determinado en \textit{VR} revisando lo movimientos que está realizando mirando la transición de sus poses en el espejo.
+
+Dados los problemas ocasionados por la \textit{COVID-19}, no fue posible realizar de una forma completa la grabación de los 16 movimientos, pudiendo solo terminar 12 de ellos antes del inicio de la pandemia. Para solventar este problema, dado que en años anteriores se desarrollo otro proyecto donde se habían capturado movimientos de expertos en capoeira, se optó por analizar esos datos y prepararlos para su utilización en este proyecto.
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale=0.4]{Animator}
+    \caption{Información detallada de la transformación de los datos grabados}
+    \label{fig:Animator}
+\end{figure} 
+
+Estas grabaciones utilizaban un sistema completamente diferente al desarrollado en este proyecto, ya que todo el contenido de los huesos del avatar capturado era guardado en ficheros \textit{.txt}(véase Figura \ref{fig:Datos}) con toda la información de las posiciones y rotaciones, en cada una de las transiciones realizadas.
+
+Para ajustar estos datos, fue necesaria la utilización de un componente de \textit{Unity} denominado \textit{Animator} el cual puede ayudar a transformar la infinidad de datos de los 25 huesos del cuerpo que utilizaba este anterior sistema. Tuvo que realizarse un ajuste manual para cada frame, ya que los datos capturado por este sistema utilizaban \textit{kinect}, siendo este un sistema mucho menos preciso que el utilizado en este proyecto. Para realizar el ajuste en el conjunto de todos los huesos, fue necesario separa las 25 transiciones de cada hueso para así ir ajustando \textit{frame} a \textit{frame} cada uno de los movimientos (véase Figura \ref{fig:Animator}), determinado las posiciones y rotaciones existentes y ajustando estos valores para que los movimientos fueran lo más precisos posible.
+
+Con todo ello, y añadiendo la supervisión del profesor en los movimientos que fue posible, se determinaron 16 acciones para el uso de este proyecto, detallados a continuación:
+
+\begin{itemize}
+	\item \textit{Ginga}, es la técnica fundamental de la capoeira, consiste en realizar un movimiento constante que prepara al usuario para acciones como evadir, fintar o atacar, así como conservar el impulso. La forma general de la ginga es un continuo paso triangular, retrocediendo un pie y luego con el otro en diagonal mientras se mantiene las piernas separadas. Para este movimiento se realizaron tres grabaciones diferentes porque es un movimiento que puede tener diversas variantes.
+	\item \textit{Armada}, técnica en donde el usuario gira sobre si mismo en vertical golpeando con el talón al oponente.
+    \item \textit{Bençao}, técnica que se ejecuta con una patada frontal básica, realizada contra el abdomen o el pecho del oponente.
+	\item \textit{Queshada}, movimiento que consiste en dar un paso quedándose de costado al oponente y se realiza una patada con un movimiento circular.
+	\item \textit{Chapa}, movimiento similar al Bençao pero se realiza con la planta del pie y paralelo al suelo.
+	\item \textit{Gancho}, técnica que consiste en levantar la pierna en un diagonal hasta una posición alta, para después contraer la rodilla  y golpear con el talón en dirección descendente.
+	\item \textit{Martelo}, movimiento de patada que tiene como objetivo golpear con el empeine en la sien del oponente.
+	\item \textit{Meia Lua de Compasso}, técnica que consiste en apoyar una mano en el suelo mientras se gira 180º y se lanza la pierna opuesta en un movimiento circular y ascendente, para golpear con el talón en la cabeza del oponente.  
+	\item \textit{Meia Lua de Frente}, movimiento que realiza una patada frontal de fuera a dentro
+	\item \textit{Ponteira}, movimiento que consiste en estirar la pierna hacia el oponente y golpearlo con la punta del pie.
+	\item \textit{Joelhada}, movimiento que se realiza alzando la rodilla hacia delante con la intención de golpear.
+	\item \textit{Galopante}, técnica que realiza un golpe con la mano abierta parecido a una bofetada.
+	\item \textit{Telefone}, técnica que sirve para golpear con las dos manos en los tímpanos del oponente.
+	\item \textit{Desprexo}, movimiento que consiste en dar una bofetada pero con la parte externa de la mano.
+	\item \textit{Skada}, movimiento que consisten en lanzar golpes consecutivos hacia delante con la mano abierta.
+	\item \textit{Esquiva de frente}, es un técnica para esquivar un ataque elevado y consiste en desplazar el cuerpo hacia abajo.
+\end{itemize}
+
+Después del proceso de grabación, se determinó que de los 16 movimientos grabados que mejor que se adaptaban a esta captura de movimientos eran: Armada, Bencao, Chapa, Esquiva, Martelo, Meia Lua De Compasso, Meia Lua De Frente y Queshada.
+
+Con estos 8 movimientos se realizó un gran trabajo de ajuste, quedando un resultado muy satisfactorio dado que se utilizó un sistema con 6 puntos de referencia para la captura de movimiento.
 
 
 \section{Diseño y creación de avatares}
@@ -362,6 +444,74 @@ Una vez investigada la generación y construcción de los huesos de los avatares
 \end{figure}
 
 
+\section{Desarrollo y Diseño de los escenarios}
+
+En el \textit{Game Engine} utilizado, todo el contenido del proyecto está englobado en escenas. Estas se pueden utilizar para crear todo tipo de \textit{UIs}, mensajes, transición entre diferentes niveles y un sinfín de posibilidades. Para el desarrollo de este proyecto se ha diferenciado el uso de un entorno en realidad virtual y otro en realidad aumentada
+
+\subsection{Entorno de realidad virtual}
+
+Se trata de la escena principal del proyecto. Presenta una interfaz de tipo \textit{VR}, tras colocarse de forma correcta todos los dispositivos adheridos al cuerpo, la aplicación se encuentra inicialmente esperando a que el usuario pueda trasladarse a una de las dos ubicaciones de este entorno. (véase Figura \ref{fig:Escena1}). 
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.4]{Escena1}
+    \caption{Escena principal de la aplicación de \textit{VR}}
+    \label{fig:Escena1}
+\end{figure} 
+
+Primero se visualiza el punto donde se efectuarán las grabaciones de los movimientos, siendo estos efectuados delante de un espejo (véase Figura \ref{fig:Escena2}). Para la realización de las transiciones existentes en una grabación, se diseñaron una serie de botones, capaces de interactuar con el usuario mediante respuestas visuales(cambiando la visualización de los botones dependiendo del estado en el que se encuentre), como respuestas apticas, ya que los controles de \textit{VR} permiten la vibración del dispositivo, una vez que este choca contra un objeto, en este caso los botones de grabación.
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.4]{Escena2}
+    \caption{Escena de la grabación de los movimientos en \textit{VR}}
+    \label{fig:Escena2}
+\end{figure} 
+
+Tras finalizar la grabación de los movimientos, nos teletransportamos al lugar donde se visualizarán los movimientos grabados por un avatar simulando ser el profesor de la aplicación (véase Figura \ref{fig:Escena3}). Al igual que ocurre con los otros botones anteriormente mencionados, estos también disponen de respuestas apticas y visuales, siendo capaces de dar una sensación de inmersión muy superior a la utilización de sistemas 2D.
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.4]{Escena3}
+    \caption{Escena para la reproducción de los movimientos en \textit{VR}}
+    \label{fig:Escena3}
+\end{figure} 
+
+Como se puede visualizar en cada una de las partes, se ha decidido utilizar un gimnasio como referentes para la práctica de la capoeira, ya que junto con el sistema de \textit{VR} se consigue tener un entorno amigable y familiar para desempeñar un entrenamiento de forma exitosa.
+
+\subsection{Entorno de realidad aumentada}
+
+Considerando que, al comenzar a formarse en un arte marcial, se desconocen los nombres de los movimientos que se desean poner en práctica, se le ofrece al alumno la posibilidad de visualizar previamente los movimientos antes de empezar a practicar, de modo que, podrá seleccionar más fácilmente el que desea.
+
+Este entorno, está pensado para ser utilizado por el alumno, de modo que pueda aprender a realizar diferentes movimientos de capoeira, sin la necesidad de que esté presente un profesor. El entrenamiento consiste en visualizar de una forma más efectiva cada una de las transiciones que realiza el profesor para completar un movimiento de forma exitosa, los cuales han sido previamente capturados por expertos en el arte marcial brasileño. El alumno podrá visualizar de una manera más lenta los movimientos, de modo que podrá fijarse mejor en los errores que puede estar cometiendo al entrenar. Con la ayuda del \textit{Smartphone} el alumno podrá practicar y aprender capoeira en cualquier entorno, sin la necesidad de tener que estar en una ubicación determinada o practicarlo a una hora fija. 
+
+\begin{figure}[h!]
+    \centering 
+    \includegraphics[scale = 0.2]{Escena4}
+    \caption{Escena para el análisis de los movimientos en \textit{AR}}
+    \label{fig:Escena4}
+\end{figure} 
+
+Como se puede observar (véase Figura \ref{fig:Escena4}) este sistema utilizar realidad aumentada para reproducir los movimientos del profesor, utilizando a su vez una interfaz de tipo \textit{UI} adaptada al sistema de \textit{AR}. Los movimientos que el alumno puede practicar se corresponden al nivel que el profesor ha determinado que debe seguir el alumno, siendo este principiante o intermedio, de este modo, el alumno va aprendiendo a realizar los movimientos de forma progresiva.
+
+Posteriormente a la selección del movimiento, el alumno deberá analizar las transiciones que está realizando el avatar del profesor, pudiendo pausar en cualquier momento el transcurso del entrenamiento, así como, detener la visualización de una determinada transición, pudiendo elegir otro que el alumno seleccione de la lista de movimientos grabados previamente por el profesor. 
 
 
+Gracias a que el sistema capta cada una de las transiciones exactas que el profesor realiza cuando graba los movimientos, el aprendiz podrá realizar un análisis preciso \textit{frame a frame} de las posiciones en las que está cometiendo algún error en la ejecución del entrenamiento.
+
+\section{Conclusiones sobre el desarrollo del proyecto}
+
+A lo largo de este capítulo, se han logrado explicar los estudios y desarrollos necesarios para este proyecto. La primera decisión importante fue elegir el sistema a utilizar para la captura de movimiento, siendo este, un sistema de \texttt{realidad virtual} capaz de capturar cada una de las transiciones necesarias para disponer de un sistema de calidad. 
+
+La utilización de uno de los paquete de \textit{Unity} denominado \textit{FinalIK} fue un pilar muy importante, para ayudar a resolver el problema existente sobre la cinemática inversa en cuerpos humanoides.
+
+Los datos obtenidos de los sensores de \textit{VR} fueron interpretarlos y mostrarlos a través de los diferentes movimientos de los avatares. Gracias a ello, se consiguieron guardar y catalogar los movimientos para realizar un análisis más preciso de las transiciones. El funcionamiento de videojuegos \textit{VR} fue una inspiración para el desarrollo de la grabación de movimientos.
+
+Posteriormente, se diseñaron avatares con el programa \texttt{Fuse Character Creator}, para dar una apariencia más realista a las aplicaciones. Con el objetivo de dar un toque más dinámico, se diseñaron dos entornos completamente diferentes en pleno auge, como son la realidad virtual y la realidad aumentada.
+
+El primero, simula un gimnasio dando la sensación al usuario de que está entrenando (véase Figura \ref{fig:Escena1}). El segundo escenario, simula un entorno completamente abierto, ya que los objetos se superpondrán sobre el mundo real. Además, en el segundo escenario se mostraron los movimientos que el usuario debería realizar.
+
+Con el objetivo de completar la comparación de los movimientos, se logró desarrollar un proceso que realiza un análisis de cada parte del cuerpo. De esta manera, se contrasta con el movimiento a realizar, mostrando el entrenamiento como si se tratase de la realidad.
+
+Y por último, se consiguieron grabar movimientos de gente experta en capoeira con el fin de catalogarlos y prepararlos para incorporarlos al proyecto.
 

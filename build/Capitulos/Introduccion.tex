@@ -9,13 +9,49 @@
 \chapter{Introducción}
 \label{cap1:sec:introduccion}
 
-En la actualidad los sistemas de captura de movimiento 
+A lo largo de los años, el movimiento humano ha sido sujeto de numerosos estudios e investigaciones mayoritariamente en el área de la medicina, ciencias del deporte e ingeniería biomédica. Dada la gran cantidad de tecnologías disponibles en el mercado, surge la necesidad de llevar estos estudios a otros ámbitos en constante crecimiento, dando lugar a la nueva era de los sistemas de captura de movimiento. En la actualidad estos sistemas se han convertido en una herramienta imprescindible en industrias tan importantes hoy día como la cinematográfica y la de los videojuegos. Estos sistemas denominados \textit{Mocap} facilitan enormemente la labor de los animadores y desarrolladores a la hora de dar vida a los movimientos de los personajes. Dado el gran avance tecnológico que han experimentado estos sistemas, se han conseguido generar unos movimientos increíblemente realistas y precisos, con lo que se consiguen reducir considerablemente los costes de producción y los tiempos de desarrollo necesarios para dar vida a grandes \textit{films} o títulos de videojuegos. 
 
+Esta manera de dar vida a los modelos 3D puede ser particularmente útil no solo en las industrias anteriormente mencionadas, sino también en la creación de sistemas capaces de diagnosticar tratamientos médicos, análisis de los atletas en la medicina deportiva, recuperación motriz en las capacidades de personas discapacitadas, estudio de los movimientos realizados por máquinas, etc.
+
+De modo que entran en escena los \textit{Reactive Virtual Trainers (RVT)}, se trata de una tecnología que se viene utilizando desde hace algunos años para la danza, las artes marciales y los ejercicios físicos en general. Teniendo en cuanta estas funcionalidades y las grandes capacidades que nos presta la tecnología, se decidió unir el entrenamiento del arte marcial brasileño, conocido como capoeira, con un sistema de captura de movimiento en \textit{VR}, dando lugar a la creación y desarrollo de un entrenador personal virtual capaz de enseñar dicho deporte. 
+
+La capoeira utiliza una de las características fundamentales que usan muchas artes marciales; se trata de la realización de una manera repetida de un mismo movimiento para ir mejorando de forma paulatina la ejecución del mismo, ya sea en su velocidad, fuerza o trayectoria. En el caso de los principiantes en este tipo de artes marciales, resulta bastante complejo apreciar la existencia de una posible mejora en la ejecución de los movimientos sin la supervisión constante de un entrenador, lo cual resulta muy complicado en la mayoría de las ocasiones. Por lo tanto, surge la necesidad de solventar esta carencia existente con el desarrollo de este proyecto, mediante la creación de un entrenador personal de capoeira.
+
+Tras observar los estudios relacionados con los \textit{RVT} determinan que los usuarios ponen una mayor atención en sistemas capaces de mostrar movimientos de objetos en 3D, música ambiental y los diferentes colores que nos brinda poder ilustrar todo esto en una pantalla, a diferencia de un entrenador personal cotidiano. Por ello, en todos los estudios realizados sobre los \textit{RVT} se ha observado una gran evolución, ya que existe una competitividad por intentar realizar los movimientos con una técnica cada vez mas depurada. Otra de las ventajas importantes en la realización de este proyecto, es la capacidad de inmersión que nos brindan tecnologías en auge como son la realidad virtual y la realidad aumentada, capaces de sumergirnos en entornos completamente adaptables a cada una de las necesidades dadas, sin tener que movernos de nuestra casa, residencia o un hospital, para la realización de una rehabilitación, entre otros. Por lo tanto, se posibilita su uso a todo tipo de públicos sin la necesidad de tener que desplazarse hasta el lugar donde normalmente se realizarían estas actividades.
+
+Por lo tanto, el objetivo de este proyecto trata sobre como capturar los movimientos realizados por un profesor de capoeira. Obteniendo los datos en tiempo real de seis sensores colocados en su cuerpo, capaces de capturar la transición de sus movimientos mediante la tecnología \textit{Mocap} en \textit{VR}. Para el análisis y aprendizaje continuo que realizará el alumno sobre la capoeira se utilizará la tecnología de \textit{AR}, con este sistema se pretende utilizar de una manera innovadora los sistemas \textit{RVT} para visualizar los movimientos mediante la cámara de un \textit{smartphone}, observando el mundo real a la vez que se analizan las transiciones de los movimientos realizados por el profesor de una más efectiva, cercana y visual. Con el fin de conseguir un entorno más realista y dinámico, se desarrollaron diferentes avatares con una apariencia completamente humana. Además de todo esto, se diseñaron dos escenarios diferenciados, uno para el ámbito de \textit{VR}, escenificando un entorno para la creación y reproducción de los movimientos realizados por el profesor. Un segundo escenario, creado y diseñado para \textit{AR} capaz de observar la secuencia de lo movimientos realizados por el profesor de una forma cercana, analítica y visual de cada una de las transiciones realizadas. Con todo ello, se logró crear dos aplicaciones con las que el usuario se sentía cómodo estando en un entorno más real.
 
 \section{Objetivos del trabajo}
 
+En el desarrollo de sistemas \textit{RVT} mediante \textit{Mocap} se centran esencialmente en como realizar una representación realista de como un usuario puede formarse y perfeccionar distintas técnicas en diferentes actividades físicas, en este caso en el arte marcial brasileño (capoeira). Para tal fin, estos sistemas se basan en la realización de forma repetida de una serie de movimientos, comparando la técnica realizada por ellos mismos y los movimientos grabados por un experto. Siguiendo estas pautas, se determinaron unos objetivos a cumplir en este Trabajo de Fin de Grado (TFG):
+
+\begin{itemize}
+    \item Identificar las limitaciones que presenta los dispositivos de \textit{VR} para lograr una captura de movimiento sobre capoeria de una forma correcta y efectiva.
+    \item Diseñar y desarrollar dos aplicaciones con la ayuda de un \textit{Game Engine} capaz de representar un entrenador virtual utilizando técnicas de realidad aumentada y realidad virtual.
+    \item Determinar un análisis de los movimientos de capoeira capturados con los sensores de \textit{VR} y lograr así, clasificar y representar mediante \textit{AR} cuales han sido los movimientos mejor registrados para el entrenamiento.
+\end{itemize}
+
 \section{Plan de Trabajo}
+
+El presente proyecto se ha elaborado en tres fases diferentes: especificación, desarrollo y documentación del proyecto.
+
+En una primera fase se establecieron cuáles serían los objetivos a tratar y el alcance del TFG, siendo necesario organizar fechas para concretar reuniones con los tutores y determinar, así, el seguimiento del desarrollo del proyecto.
+
+Posteriormente, en la segunda fase, se ponen en práctica las especificaciones planteadas en la fase anterior. Esta fase se divide a su vez en diferentes pasos: el primero de ellos fue la elección del entorno a utilizar, de modo que se adecue a la tecnología utilizada en \textit{VR} y \textit{AR}. El segundo paso consistía en desarrollar dos aplicaciones claramente diferenciables, englobando ambas un entorno 3D, capaces de utilizar una lógica capturando movimientos en tiempo real, representados por diferentes avatares. Por último, tras terminar el desarrollo de las aplicaciones, se realizaron las grabaciones y ajustes de los movimientos grabados con gente experta en capoeira, analizando y ajustando los movimientos que posteriormente se incorporarían al entrenador personal.
+
+Finalmente, en la fase de documentación del proyecto, se realiza un proceso de investigación sobre toda la información existente sobre la captura de movimiento y el contenido necesario para la elaboración del Trabajo de Fin de Grado. Esta fase fue ejecutada de forma paralela al desarrollo de las aplicaciones.
+
 
 \section{Estructura de la memoria}
 
+El siguiente proyecto se estructura en seis capítulos definidos de la siguiente manera:
+
+\begin{itemize}
+	\item En el capítulo uno se describe la introducción al proyecto, los objetivos principales y el plan del trabajo.
+	\item En el capítulo dos se describe la historia de la captura de movimiento y los diferentes métodos de captura de movimiento existentes en el mercado.
+	\item El capítulo tres engloba las tecnólogas utilizas, tanto hardware como software, y se justifica la toma de decisiones sobre los entornos utilizados. 
+	\item En el capítulo cuatro se describe todo el desarrollo del proyecto explicando en diferentes secciones el estudio previo para su creación y las implementaciones necesarias para dar forma y vida al entrenador virtual de capoeira. Además, se explica la transición de los diferentes escenarios de la aplicación de \textit{VR} y \textit{AR}.
+	\item En el capítulo cinco se presenta las discusiones, la conclusión obtenida del proyecto y las propuestas de cara al futuro.
+	\item En el capítulo seis se describe la distribución y organización del trabajo realizado.
+\end{itemize}
 
